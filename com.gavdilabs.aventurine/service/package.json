@@ -32,7 +32,8 @@
     "build:ts": "echo 'Compiling...' && tsc --project tsconfig.build.json",
     "build:mta": "mbt build",
     "deploy": "run-s build build:mta deploy:cf",
-    "deploy:cf": "cross-var cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar"
+    "deploy:cf": "cross-var cf deploy mta_archives/${npm_package_name}_${npm_package_version}.mtar",
+    "watch-managercockpit": "cds watch --open managercockpit/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "dependencies": {
     "@sap-cloud-sdk/connectivity": "^2.12.1",
@@ -51,6 +52,7 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
+    "@sap/ux-specification": "^1.108.3",
     "@types/chai": "^4.3.4",
     "@types/chai-http": "^4.2.0",
     "@types/express": "^4.17.13",
@@ -95,14 +97,14 @@
       "sf": {
         "kind": "odata-v2",
         "model": "srv/external/sf",
-        "credentials": { 
+        "credentials": {
           "requestTimeout": 30000,
-          "url": "https://api12preview.sapsf.eu/odata/v2", 
-          "authentication": "BasicAuthentication", 
-          "username": "GDSADMIN@gavdiasT3", 
+          "url": "https://api12preview.sapsf.eu/odata/v2",
+          "authentication": "BasicAuthentication",
+          "username": "GDSADMIN@gavdiasT3",
           "password": "TjWv7Sb@v7!l"
+        }
       }
-    }
     },
     "migrations": {
       "db": {
@@ -117,5 +119,8 @@
         }
       }
     }
-  }
+  },
+  "sapux": [
+    "app/managercockpit"
+  ]
 }

@@ -8,6 +8,8 @@ export interface IUser {
   lastName: string;
   userName: string;
   email: string;
+  stage: string;
+  criticality: string;
 }
 
 export interface ISFPosition {

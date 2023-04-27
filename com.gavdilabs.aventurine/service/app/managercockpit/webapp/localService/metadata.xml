@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="BasicService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="User" EntityType="BasicService.User"/>
+                <EntitySet Name="SFPosition" EntityType="BasicService.SFPosition">
+                    <NavigationPropertyBinding Path="createdByNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="departmentNav" Target="SFDepartment"/>
+                    <NavigationPropertyBinding Path="divisionNav" Target="SFDivision"/>
+                    <NavigationPropertyBinding Path="incumbentNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="lastModifiedByNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="parentPosition" Target="SFPosition"/>
+                </EntitySet>
+                <EntitySet Name="SFUser" EntityType="BasicService.SFUser">
+                    <NavigationPropertyBinding Path="customManager" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="customReports" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="directReports" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="headOfUnitOfFODepartmentNav" Target="SFDepartment"/>
+                    <NavigationPropertyBinding Path="headOfUnitOfFODivisionNav" Target="SFDivision"/>
+                    <NavigationPropertyBinding Path="hr" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="hrReports" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="incumbentOfPositionNav" Target="SFPosition"/>
+                    <NavigationPropertyBinding Path="manager" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="matrixManager" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="matrixReports" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="proxy" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="secondManager" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="secondReports" Target="SFUser"/>
+                </EntitySet>
+                <EntitySet Name="SFDivision" EntityType="BasicService.SFDivision">
+                    <NavigationPropertyBinding Path="createdByNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="headOfUnitNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="lastModifiedByNav" Target="SFUser"/>
+                </EntitySet>
+                <EntitySet Name="SFDepartment" EntityType="BasicService.SFDepartment">
+                    <NavigationPropertyBinding Path="createdByNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="cust_Division" Target="SFDivision"/>
+                    <NavigationPropertyBinding Path="headOfUnitNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="lastModifiedByNav" Target="SFUser"/>
+                    <NavigationPropertyBinding Path="parentNav" Target="SFDepartment"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="User">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="firstName" Type="Edm.String" MaxLength="255"/>
+                <Property Name="lastName" Type="Edm.String" MaxLength="255"/>
+                <Property Name="userName" Type="Edm.String" MaxLength="100"/>
+                <Property Name="email" Type="Edm.String" MaxLength="255"/>
+                <Property Name="stage" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="SFPosition">
+                <Key>
+                    <PropertyRef Name="code"/>
+                    <PropertyRef Name="effectiveStartDate"/>
+                </Key>
+                <Property Name="code" Type="Edm.String" MaxLength="128" Nullable="false"/>
+                <Property Name="effectiveStartDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="businessUnit" Type="Edm.String" MaxLength="128"/>
+                <Property Name="changeReason" Type="Edm.String" MaxLength="128"/>
+                <Property Name="comment" Type="Edm.String" MaxLength="255"/>
+                <Property Name="company" Type="Edm.String" MaxLength="128"/>
+                <Property Name="costCenter" Type="Edm.String" MaxLength="128"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="createdDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="creationSource" Type="Edm.String" MaxLength="255"/>
+                <Property Name="criticality" Type="Edm.Int64"/>
+                <Property Name="cust_jobFunction" Type="Edm.String" MaxLength="128"/>
+                <Property Name="department" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description" Type="Edm.String" MaxLength="255"/>
+                <Property Name="division" Type="Edm.String" MaxLength="128"/>
+                <Property Name="effectiveEndDate" Type="Edm.Date"/>
+                <Property Name="effectiveStatus" Type="Edm.String" MaxLength="255"/>
+                <Property Name="employeeClass" Type="Edm.String" MaxLength="128"/>
+                <Property Name="externalName_ar_SA" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_da_DK" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_de_DE" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_defaultValue" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_en_DEBUG" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_en_GB" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_en_US" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_fr_FR" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_localized" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_nl_NL" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_pl_PL" Type="Edm.String" MaxLength="255"/>
+                <Property Name="externalName_sv_SE" Type="Edm.String" MaxLength="255"/>
+                <Property Name="incumbent" Type="Edm.String" MaxLength="100"/>
+                <Property Name="jobCode" Type="Edm.String" MaxLength="128"/>
+                <Property Name="jobLevel" Type="Edm.String" MaxLength="128"/>
+                <Property Name="jobTitle" Type="Edm.String" MaxLength="255"/>
+                <Property Name="lastModifiedBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="legacyPositionId" Type="Edm.Int64"/>
+                <Property Name="location" Type="Edm.String" MaxLength="32"/>
+                <Property Name="mdfSystemOptimisticLockUUID" Type="Edm.String" MaxLength="255"/>
+                <Property Name="mdfSystemRecordStatus" Type="Edm.String" MaxLength="255"/>
+                <Property Name="multipleIncumbentsAllowed" Type="Edm.Boolean"/>
+                <Property Name="payGrade" Type="Edm.String" MaxLength="32"/>
+                <Property Name="payRange" Type="Edm.String" MaxLength="32"/>
+                <Property Name="positionControlled" Type="Edm.Boolean"/>
+                <Property Name="positionCriticality" Type="Edm.String" MaxLength="128"/>
+                <Property Name="positionTitle" Type="Edm.String" MaxLength="255"/>
+                <Property Name="regularTemporary" Type="Edm.String" MaxLength="128"/>
+                <Property Name="standardHours" Type="Edm.Decimal" Scale="variable"/>
+                <Property Name="targetFTE" Type="Edm.Decimal" Scale="variable"/>
+                <Property Name="technicalParameters" Type="Edm.String" MaxLength="255"/>
+                <Property Name="transactionSequence" Type="Edm.Int64"/>
+                <Property Name="type" Type="Edm.String" MaxLength="128"/>
+                <Property Name="vacant" Type="Edm.Boolean"/>
+                <NavigationProperty Name="createdByNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="departmentNav" Type="BasicService.SFDepartment"/>
+                <NavigationProperty Name="divisionNav" Type="BasicService.SFDivision"/>
+                <NavigationProperty Name="incumbentNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="lastModifiedByNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="parentPosition" Type="BasicService.SFPosition"/>
+            </EntityType>
+            <EntityType Name="SFUser">
+                <Key>
+                    <PropertyRef Name="userId"/>
+                </Key>
+                <Property Name="userId" Type="Edm.String" MaxLength="100" Nullable="false"/>
+                <Property Name="addressLine1" Type="Edm.String" MaxLength="255"/>
+                <Property Name="addressLine2" Type="Edm.String" MaxLength="255"/>
+                <Property Name="addressLine3" Type="Edm.String"/>
+                <Property Name="assignmentUUID" Type="Edm.String" MaxLength="32" Nullable="false"/>
+                <Property Name="benchStrength" Type="Edm.String"/>
+                <Property Name="bonusBudgetAmount" Type="Edm.Double"/>
+                <Property Name="bonusTarget" Type="Edm.Double"/>
+                <Property Name="businessPhone" Type="Edm.String" MaxLength="20"/>
+                <Property Name="businessSegment" Type="Edm.String"/>
+                <Property Name="cellPhone" Type="Edm.String"/>
+                <Property Name="citizenship" Type="Edm.String"/>
+                <Property Name="city" Type="Edm.String" MaxLength="255"/>
+                <Property Name="companyExitDate" Type="Edm.Date"/>
+                <Property Name="compensationBonusEligible" Type="Edm.Boolean"/>
+                <Property Name="compensationEligible" Type="Edm.Boolean"/>
+                <Property Name="compensationReadOnly" Type="Edm.Boolean"/>
+                <Property Name="compensationSalaryEligible" Type="Edm.Boolean"/>
+                <Property Name="compensationSalaryRateType" Type="Edm.String"/>
+                <Property Name="compensationSalaryRateUnits" Type="Edm.Int64"/>
+                <Property Name="compensationStockEligible" Type="Edm.Boolean"/>
+                <Property Name="competency" Type="Edm.Single"/>
+                <Property Name="country" Type="Edm.String" MaxLength="255"/>
+                <Property Name="criticalTalentComments" Type="Edm.String"/>
+                <Property Name="custom01" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom02" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom03" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom04" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom06" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom07" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom08" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom09" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom10" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom11" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom12" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom13" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom14" Type="Edm.String" MaxLength="255"/>
+                <Property Name="custom15" Type="Edm.String" MaxLength="255"/>
+                <Property Name="dateOfBirth" Type="Edm.Date"/>
+                <Property Name="dateOfCurrentPosition" Type="Edm.Date"/>
+                <Property Name="dateOfPosition" Type="Edm.Date"/>
+                <Property Name="defaultFullName" Type="Edm.String"/>
+                <Property Name="defaultLocale" Type="Edm.String" MaxLength="32"/>
+                <Property Name="department" Type="Edm.String" MaxLength="128"/>
+                <Property Name="displayName" Type="Edm.String" MaxLength="4000"/>
+                <Property Name="division" Type="Edm.String" MaxLength="128"/>
+                <Property Name="email" Type="Edm.String"/>
+                <Property Name="empId" Type="Edm.String" MaxLength="255"/>
+                <Property Name="employeeClass" Type="Edm.String"/>
+                <Property Name="ethnicity" Type="Edm.String"/>
+                <Property Name="fax" Type="Edm.String" MaxLength="20"/>
+                <Property Name="finalJobCode" Type="Edm.String"/>
+                <Property Name="finalJobFamily" Type="Edm.String"/>
+                <Property Name="finalJobRole" Type="Edm.String"/>
+                <Property Name="firstName" Type="Edm.String" MaxLength="128"/>
+                <Property Name="futureLeader" Type="Edm.Boolean"/>
+                <Property Name="gender" Type="Edm.String" Nullable="false"/>
+                <Property Name="hireDate" Type="Edm.Date"/>
+                <Property Name="homePhone" Type="Edm.String"/>
+                <Property Name="impactOfLoss" Type="Edm.String"/>
+                <Property Name="impactOfLossComments" Type="Edm.String"/>
+                <Property Name="isPrimaryAssignment" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="issueComments" Type="Edm.String"/>
+                <Property Name="jobCode" Type="Edm.String" MaxLength="128"/>
+                <Property Name="jobFamily" Type="Edm.String"/>
+                <Property Name="jobLevel" Type="Edm.String"/>
+                <Property Name="jobRole" Type="Edm.String"/>
+                <Property Name="jobTitle" Type="Edm.String"/>
+                <Property Name="keyPosition" Type="Edm.Boolean"/>
+                <Property Name="lastModified" Type="Edm.Date"/>
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="lastModifiedWithTZ" Type="Edm.DateTimeOffset"/>
+                <Property Name="lastName" Type="Edm.String" MaxLength="128"/>
+                <Property Name="lastReviewDate" Type="Edm.String"/>
+                <Property Name="level" Type="Edm.String"/>
+                <Property Name="localCurrencyCode" Type="Edm.String"/>
+                <Property Name="location" Type="Edm.String" MaxLength="128"/>
+                <Property Name="lumpsum2Target" Type="Edm.Double"/>
+                <Property Name="lumpsumTarget" Type="Edm.Double"/>
+                <Property Name="married" Type="Edm.Boolean"/>
+                <Property Name="matrix1Label" Type="Edm.String"/>
+                <Property Name="matrix2Label" Type="Edm.String"/>
+                <Property Name="matrixManaged" Type="Edm.Boolean"/>
+                <Property Name="meritEffectiveDate" Type="Edm.Date"/>
+                <Property Name="meritTarget" Type="Edm.Date"/>
+                <Property Name="mi" Type="Edm.String" MaxLength="128"/>
+                <Property Name="minority" Type="Edm.Boolean"/>
+                <Property Name="nationality" Type="Edm.String"/>
+                <Property Name="newToPosition" Type="Edm.Boolean"/>
+                <Property Name="nickname" Type="Edm.String" MaxLength="128"/>
+                <Property Name="objective" Type="Edm.Single"/>
+                <Property Name="onboardingId" Type="Edm.String"/>
+                <Property Name="origHireDate" Type="Edm.Date"/>
+                <Property Name="password" Type="Edm.String" MaxLength="128"/>
+                <Property Name="payGrade" Type="Edm.String"/>
+                <Property Name="performance" Type="Edm.Single"/>
+                <Property Name="potential" Type="Edm.Single"/>
+                <Property Name="promotionAmount" Type="Edm.Double"/>
+                <Property Name="raiseProrating" Type="Edm.Double"/>
+                <Property Name="reasonForLeaving" Type="Edm.String"/>
+                <Property Name="reloComments" Type="Edm.String"/>
+                <Property Name="reloLocation" Type="Edm.String"/>
+                <Property Name="reloWilling" Type="Edm.String"/>
+                <Property Name="reviewFreq" Type="Edm.String" MaxLength="256"/>
+                <Property Name="riskOfLoss" Type="Edm.String"/>
+                <Property Name="salary" Type="Edm.Double"/>
+                <Property Name="salaryBudgetExtra2Percentage" Type="Edm.Double"/>
+                <Property Name="salaryBudgetExtraPercentage" Type="Edm.Double"/>
+                <Property Name="salaryBudgetFinalSalaryPercentage" Type="Edm.Double"/>
+                <Property Name="salaryBudgetLumpsumPercentage" Type="Edm.Double"/>
+                <Property Name="salaryBudgetMeritPercentage" Type="Edm.Double"/>
+                <Property Name="salaryBudgetPromotionPercentage" Type="Edm.Double"/>
+                <Property Name="salaryBudgetTotalRaisePercentage" Type="Edm.Double"/>
+                <Property Name="salaryLocal" Type="Edm.Double"/>
+                <Property Name="salaryProrating" Type="Edm.Double"/>
+                <Property Name="salutation" Type="Edm.String" MaxLength="128"/>
+                <Property Name="sciLastModified" Type="Edm.DateTimeOffset"/>
+                <Property Name="seatingChart" Type="Edm.String"/>
+                <Property Name="serviceDate" Type="Edm.Date"/>
+                <Property Name="ssn" Type="Edm.String" MaxLength="128"/>
+                <Property Name="state" Type="Edm.String" MaxLength="20"/>
+                <Property Name="status" Type="Edm.String" MaxLength="17" Nullable="false"/>
+                <Property Name="stockBudgetOptionAmount" Type="Edm.Double"/>
+                <Property Name="stockBudgetOther1Amount" Type="Edm.Double"/>
+                <Property Name="stockBudgetOther2Amount" Type="Edm.Double"/>
+                <Property Name="stockBudgetOther3Amount" Type="Edm.Double"/>
+                <Property Name="stockBudgetStockAmount" Type="Edm.Double"/>
+                <Property Name="stockBudgetUnitAmount" Type="Edm.Double"/>
+                <Property Name="suffix" Type="Edm.String" MaxLength="128"/>
+                <Property Name="sysCostOfSource" Type="Edm.Single"/>
+                <Property Name="sysSource" Type="Edm.Int32"/>
+                <Property Name="sysStartingSalary" Type="Edm.Single"/>
+                <Property Name="talentPool" Type="Edm.String"/>
+                <Property Name="teamMembersSize" Type="Edm.Int32"/>
+                <Property Name="timeZone" Type="Edm.String" MaxLength="16"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255"/>
+                <Property Name="totalTeamSize" Type="Edm.Int64"/>
+                <Property Name="username" Type="Edm.String" MaxLength="100"/>
+                <Property Name="veteranDisabled" Type="Edm.Boolean"/>
+                <Property Name="veteranMedal" Type="Edm.Boolean"/>
+                <Property Name="veteranProtected" Type="Edm.Boolean"/>
+                <Property Name="veteranSeparated" Type="Edm.Boolean"/>
+                <Property Name="zipCode" Type="Edm.String" MaxLength="10"/>
+                <NavigationProperty Name="customManager" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="customReports" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="directReports" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="headOfUnitOfFODepartmentNav" Type="Collection(BasicService.SFDepartment)"/>
+                <NavigationProperty Name="headOfUnitOfFODivisionNav" Type="Collection(BasicService.SFDivision)"/>
+                <NavigationProperty Name="hr" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="hrReports" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="incumbentOfPositionNav" Type="Collection(BasicService.SFPosition)"/>
+                <NavigationProperty Name="manager" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="matrixManager" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="matrixReports" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="proxy" Type="Collection(BasicService.SFUser)"/>
+                <NavigationProperty Name="secondManager" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="secondReports" Type="Collection(BasicService.SFUser)"/>
+            </EntityType>
+            <EntityType Name="SFDivision">
+                <Key>
+                    <PropertyRef Name="externalCode"/>
+                    <PropertyRef Name="startDate"/>
+                </Key>
+                <Property Name="externalCode" Type="Edm.String" MaxLength="32" Nullable="false"/>
+                <Property Name="startDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="createdDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="createdOn" Type="Edm.Date"/>
+                <Property Name="cust_BusinessUnitProp" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_ar_SA" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_da_DK" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_de_DE" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_defaultValue" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_en_DEBUG" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_en_GB" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_en_US" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_fr_FR" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_localized" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_nl_NL" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_pl_PL" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_sv_SE" Type="Edm.String" MaxLength="128"/>
+                <Property Name="endDate" Type="Edm.Date"/>
+                <Property Name="entityUUID" Type="Edm.String" MaxLength="255" Nullable="false"/>
+                <Property Name="headOfUnit" Type="Edm.String" MaxLength="100"/>
+                <Property Name="lastModifiedBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="lastModifiedOn" Type="Edm.Date"/>
+                <Property Name="mdfSystemRecordId" Type="Edm.String" MaxLength="255"/>
+                <Property Name="name" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_ar_SA" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_da_DK" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_de_DE" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_defaultValue" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_en_DEBUG" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_en_GB" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_en_US" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_fr_FR" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_localized" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_nl_NL" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_pl_PL" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_sv_SE" Type="Edm.String" MaxLength="90"/>
+                <Property Name="status" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="createdByNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="headOfUnitNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="lastModifiedByNav" Type="BasicService.SFUser"/>
+            </EntityType>
+            <EntityType Name="SFDepartment">
+                <Key>
+                    <PropertyRef Name="externalCode"/>
+                    <PropertyRef Name="startDate"/>
+                </Key>
+                <Property Name="externalCode" Type="Edm.String" MaxLength="32" Nullable="false"/>
+                <Property Name="startDate" Type="Edm.Date" Nullable="false"/>
+                <Property Name="costCenter" Type="Edm.String" MaxLength="128"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="createdDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="createdOn" Type="Edm.Date"/>
+                <Property Name="cust_DivisionProp" Type="Edm.String"/>
+                <Property Name="description" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_ar_SA" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_da_DK" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_de_DE" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_defaultValue" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_en_DEBUG" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_en_GB" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_en_US" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_fr_FR" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_localized" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_nl_NL" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_pl_PL" Type="Edm.String" MaxLength="128"/>
+                <Property Name="description_sv_SE" Type="Edm.String" MaxLength="128"/>
+                <Property Name="endDate" Type="Edm.Date"/>
+                <Property Name="entityUUID" Type="Edm.String" MaxLength="255" Nullable="false"/>
+                <Property Name="headOfUnit" Type="Edm.String" MaxLength="100"/>
+                <Property Name="lastModifiedBy" Type="Edm.String" MaxLength="100"/>
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset"/>
+                <Property Name="lastModifiedOn" Type="Edm.Date"/>
+                <Property Name="mdfSystemRecordId" Type="Edm.String" MaxLength="255"/>
+                <Property Name="name" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_ar_SA" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_da_DK" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_de_DE" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_defaultValue" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_en_DEBUG" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_en_GB" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_en_US" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_fr_FR" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_localized" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_nl_NL" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_pl_PL" Type="Edm.String" MaxLength="90"/>
+                <Property Name="name_sv_SE" Type="Edm.String" MaxLength="90"/>
+                <Property Name="parent" Type="Edm.String" MaxLength="128"/>
+                <Property Name="status" Type="Edm.String" MaxLength="255"/>
+                <NavigationProperty Name="createdByNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="cust_Division" Type="Collection(BasicService.SFDivision)"/>
+                <NavigationProperty Name="headOfUnitNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="lastModifiedByNav" Type="BasicService.SFUser"/>
+                <NavigationProperty Name="parentNav" Type="BasicService.SFDepartment"/>
+            </EntityType>
+            <Annotations Target="BasicService.User/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                </Annotations>
+                <Annotations Target="BasicService.User/createdBy">
+                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                    <Annotation Term="Core.Immutable" Bool="true"/>
+                    <Annotation Term="Core.Computed" Bool="true"/>
+                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                        </Annotations>
+                        <Annotations Target="BasicService.User/modifiedAt">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                            </Annotations>
+                            <Annotations Target="BasicService.User/modifiedBy">
+                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                <Annotation Term="Core.Computed" Bool="true"/>
+                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                    </Annotations>
+                                </Schema>
+                            </edmx:DataServices>
+                        </edmx:Edmx>
