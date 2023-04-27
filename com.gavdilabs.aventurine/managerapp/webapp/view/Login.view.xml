@@ -1,0 +1,33 @@
+<mvc:View xmlns:form="sap.ui.layout.form"
+	controllerName="com.gavdilabs.ui5template.controller.Login"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+    <Page title="Vestas Career Cockpit" titleAlignment="Start">
+        <form:SimpleForm editable="true" layout="ResponsiveGridLayout"
+            labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="true">
+                <Label text="Username" required="true" />
+                <Input id="inp_userName" width="20rem"/>
+                <Label text="Password" required="true"/>
+                <Input id="inp_password" type="Password" width="20rem"/>
+                <Label/>
+                <Button text="Login" type="Emphasized" width="12rem" press="onLogin"/>
+                <Label/>
+                <Link text="Forgot username or password?"/>
+                <Label/>
+                <Button text="Register" type="Ghost" width="12rem"/>
+        </form:SimpleForm>
+    </Page>
+</mvc:View>
