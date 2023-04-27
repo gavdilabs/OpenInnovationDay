@@ -1,7 +1,7 @@
 {
   "_version": "1.12.0",
   "sap.app": {
-    "id": "com.gavdilabs.ui5template",
+    "id": "com.gavdilabs.manager",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "title": "{{appTitle}}",
@@ -32,7 +32,7 @@
   },
   "sap.ui5": {
     "rootView": {
-      "viewName": "com.gavdilabs.ui5template.view.App",
+      "viewName": "com.gavdilabs.manager.view.App",
       "type": "XML",
       "async": true,
       "id": "app"
@@ -43,7 +43,8 @@
         "sap.ui.core": {},
         "sap.ui.layout": {},
         "sap.ui.unified": {},
-        "sap.m": {}
+        "sap.m": {},
+        "sap.f": {}
       }
     },
     "handleValidation": true,
@@ -55,7 +56,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "com.gavdilabs.ui5template.i18n.i18n"
+          "bundleName": "com.gavdilabs.manager.i18n.i18n"
         }
       },
       "": {
@@ -73,7 +74,7 @@
       "config": {
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
-        "viewPath": "com.gavdilabs.ui5template.view",
+        "viewPath": "com.gavdilabs.manager.view",
         "controlId": "app",
         "controlAggregation": "pages",
         "async": true

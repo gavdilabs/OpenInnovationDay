@@ -1,7 +1,7 @@
 {
-  "name": "ui5template",
+  "name": "manager",
   "version": "1.0.0",
-  "description": "UI5 Application: ui5template",
+  "description": "UI5 Application: manager",
   "author": "Gavdi Labs",
   "license": "Apache-2.0",
   "scripts": {

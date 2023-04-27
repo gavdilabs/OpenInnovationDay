@@ -1,5 +1,5 @@
 <mvc:View xmlns:form="sap.ui.layout.form"
-	controllerName="com.gavdilabs.ui5template.controller.Login"
+	controllerName="com.gavdilabs.manager.controller.Login"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">

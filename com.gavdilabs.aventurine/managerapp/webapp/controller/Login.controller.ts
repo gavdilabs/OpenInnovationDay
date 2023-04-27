@@ -5,7 +5,7 @@ import Input from "sap/m/Input";
 import MessageToast from "sap/m/MessageToast";
 
 /**
- * @namespace com.gavdilabs.ui5template.controller
+ * @namespace com.gavdilabs.manager.controller
  */
 export default class Login extends BaseController {
   private formatter = formatter;

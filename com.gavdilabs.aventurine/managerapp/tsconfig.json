@@ -12,7 +12,7 @@
     "baseUrl": "./",
     "typeRoots": ["./node_modules/@types", "./node_modules/@openui5/ts-types-esm"],
     "paths": {
-      "com/gavdilabs/ui5template/*": ["./webapp/*"]
+      "com/gavdilabs/manager/*": ["./webapp/*"]
     }
   },
   "include": ["./webapp/**/*"]

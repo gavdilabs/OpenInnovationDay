@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="com.gavdilabs.ui5template.controller.App"
+	controllerName="com.gavdilabs.manager.controller.App"
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
