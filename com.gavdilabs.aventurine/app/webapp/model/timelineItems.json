@@ -1,0 +1,76 @@
+{
+	"Employees": [
+		{
+			"Name": "Welcome Aboard!",
+			"JobTitle": "Accounts Payable Manager",
+			"Photo": "/images/Laurent_Dubois.png",
+			"Icon": "sap-icon://activity-individual",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1677625200000)"
+		},
+		{
+			"Name": "Your first day of work is set",
+			"JobTitle": "Configuration Expert",
+			"Photo": "/images/Sabine_Mayer.png",
+			"Icon": "sap-icon://time-entry-request",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1677625200000)"
+		},
+		{
+			"Name": "You have a Buddy!",
+			"JobTitle": "Credit Analyst",
+			"Photo": "/images/Alain_Chevalier.png",
+			"Icon": "sap-icon://manager-insight",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1678575600000)"
+		},
+		{
+			"Name": "New Tech ready for your consideration",
+			"JobTitle": "GL Accountant",
+			"Photo": "/images/Monique_Legrand.png",
+			"Icon": "sap-icon://account",
+			"JobResponsibilities": "We want you to have the best tools to do your job. And only you know what those tools are. \nFollow the link to choose your new PC and Phone",
+			"HireDate": "Date(1678575600000)"
+		},
+		{
+			"Name": "Coming Soon",
+			"JobTitle": "GL Accountant",
+			"Photo": "/images/John_Miller.png",
+			"Icon": "sap-icon://account",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1678575600000)"
+		},
+		{
+			"Name": "Coming Soon",
+			"JobTitle": "Internal Auditor",
+			"Photo": "/images/Richard_Wilson.png",
+			"Icon": "sap-icon://badge",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1678575600000)"
+		},
+		{
+			"Name": "Coming Soon",
+			"JobTitle": "Internal Auditor",
+			"Photo": "/images/Julie_Armstrong.png",
+			"Icon": "sap-icon://badge",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1678575600000)"
+		},
+		{
+			"Name": "Coming Soon",
+			"JobTitle": "Expense Controller",
+			"Photo": "/images/Donna_Moore.png",
+			"Icon": "sap-icon://employee",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1678575600000)"
+		},
+		{
+			"Name": "Coming Soon",
+			"JobTitle": "Accounts Receivable Accountant",
+			"Photo": "/images/Elena_Petrova.png",
+			"Icon": "sap-icon://employee",
+			"JobResponsibilities": "Check back here for more exiting developments before you join us here at Vestas!",
+			"HireDate": "Date(1678575600000)"
+		}
+	]
+}

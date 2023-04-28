@@ -67,7 +67,11 @@
                     "autoExpandSelect": true,
                     "earlyRequests": true
                 }
-            }
+            },
+			"timelineItems": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/timelineiItems.json"
+			}
         },
         "routing": {
             "config": {

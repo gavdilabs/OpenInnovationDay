@@ -1,17 +1,111 @@
-<mvc:View
-	controllerName="com.gavdilabs.ui5template.controller.Main"
-	displayBlock="true"
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.Main" displayBlock="true"
 	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
+	xmlns:mvc="sap.ui.core.mvc" xmlns:commons="sap.suite.ui.commons" xmlns:l="sap.ui.layout" xmlns:core="sap.ui.core">
+	<Page id="page" floatingFooter="true">		<!-- title="{i18n>title}" -->
+		<content>
+		
+		<VBox >
+		<HBox >
+			<ObjectHeader
+		icon="../images/photo1.png"
+		iconDensityAware="false"
+		iconAlt="Denise Smith"
+		imageShape="Circle"
+		responsive="true"
+		title="Denise Smith"
+		intro="I'm your new manager. ask me about your job."
+		class="sapUiResponsivePadding--header" >
+			<ObjectAttribute title="Email address" text="DeniseSmith@Vestas.com" active="true" />
+			<ObjectAttribute title="Office Phone" text="+33 6 453 564" />
+	</ObjectHeader>
+				<ObjectHeader
+		icon="../images/photo2.png"
+		iconDensityAware="false"
+		iconAlt="Daniel Clarke"
+		imageShape="Circle"
+		responsive="true"
+		title="Daniel Clarke"
+		intro="I'll be your Buddy. ask me about the canteen and the ping pong table."
+		class="sapUiResponsivePadding--header" >
+			<ObjectAttribute title="Email address" text="daniel Clarke@Vestas.com" active="true" />
+			<ObjectAttribute title="Office Phone" text="+33 1 2 345" />
+	</ObjectHeader>
+				<ObjectHeader
+		icon="../images/photo3.png"
+		iconDensityAware="false"
+		iconAlt="Lois lane"
+		imageShape="Circle"
+		responsive="true"
+		title="Lois Lane"
+		intro="I'm in charge of your recruitment. Ask me about your contract."
+		class="sapUiResponsivePadding--header" >
+			<ObjectAttribute title="Email address" text="LoisLane@Vestas.com" active="true" />
+			<ObjectAttribute title="Office Phone" text="+33 6453 56d4" />
+	</ObjectHeader>
+	</HBox>
+</VBox>
+<HBox >
 
-<List
-		items="{/User}"
-		headerText="Users"
-		growing="true"
-		growingThreshold="4"
-		growingScrollToLoad="false">
-		<StandardListItem
-            title="{firstName} {lastName}"
-			description="{userName}"/>
-	</List>
+<VBox width="75%">
+<!-- Text-->
+
+	<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:content>
+			<core:HTML content='        &lt;p&gt;Dear [Employee Name],&lt;/p&gt;
+        &lt;p&gt;On behalf of the entire team at Vestas, I would like to extend a warm welcome to you! We are thrilled to have you join us as a valuable member of our organization.&lt;/p&gt;
+        &lt;p&gt;At Vestas, we are committed to driving the global transition to sustainable energy. As one of the worls leading renewable energy companies, we believe in the power of wind energy to transform the world for the better. We are proud of the work we do, and we are excited to have you join us in our mission.&lt;/p&gt;
+        &lt;p&gt;As a new employee, you will have the opportunity to learn from some of the most talented and experienced professionals in the industry. We are committed to providing you with the support, resources, and training you need to succeed in your role.&lt;/p&gt;
+        &lt;p&gt;Once again, welcome to the team! We look forward to working with you and seeing all the great things we will accomplish together.&lt;/p&gt;
+        &lt;p&gt;Best regards,&lt;/p&gt;
+        &lt;p&gt;&lt;/p&gt;'>
+			</core:HTML>
+		</l:content>
+	</l:VerticalLayout>
+			<Button text="Show me my new place of work!"
+						press="onPress"
+						type="Accept"
+						ariaDescribedBy="defaultButtonDescription genericButtonDescription">
+					<layoutData>
+						<FlexItemData growFactor="1" />
+					</layoutData>
+				</Button>
+</VBox>
+
+<VBox>
+<!-- TimeLine-->
+<commons:Timeline			
+			id="idTimeline"
+			enableDoubleSided="true"
+			groupBy="HireDate"
+			growingThreshold="0"
+			sortOldestFirst="true"
+			content="{ path: 'timelineItems>/Employees'}"
+			enableScroll="false"
+			showHeaderBar="false">
+		<commons:content>
+			<commons:TimelineItem
+					id="idTemplateItem"
+					dateTime="{timelineItems>HireDate}"
+					userNameClickable="true"
+					userNameClicked="onUserNameClick"
+					select="onPressItems"
+					text="{timelineItems>JobResponsibilities}"
+					userName="{timelineItems>Name}"
+					filterValue="{timelineItems>JobTitle}"
+					icon="{timelineItems>Icon}">
+			</commons:TimelineItem>
+		</commons:content>
+	</commons:Timeline>
+</VBox>
+
+</HBox>
+
+<!-- 			<Button text="Search" press="onSearchUsers" />
+			<List items="{/SFUser}" headerText="Users" growing="true" growingThreshold="20" growingScrollToLoad="false">
+				<StandardListItem title="{firstName} {lastName}" description="{username}"/>
+			</List> -->
+		</content>
+	</Page>
 </mvc:View>
