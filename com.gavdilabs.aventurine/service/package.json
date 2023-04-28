@@ -101,8 +101,8 @@
           "requestTimeout": 30000,
           "url": "https://api12preview.sapsf.eu/odata/v2",
           "authentication": "BasicAuthentication",
-          "username": "GDSADMIN@gavdiasT3",
-          "password": "TjWv7Sb@v7!l"
+          "username": "",
+          "password": ""
         }
       }
     },
