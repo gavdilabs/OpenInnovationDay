@@ -1,5 +1,5 @@
 using {schema} from '../db/schema';
-using { northwind } from './external/northwind';
+using { sf } from './external/sf';
 
 service BasicService @(requires: 'authenticated-user') {
 
@@ -26,7 +26,7 @@ service BasicService @(requires: 'authenticated-user') {
     // =================== FUNCTION IMPORTS ==========================
 
     // ================== EXTERNAL SERVICES ==========================
-    entity NWProduct @(restrict: [
+    entity SFPosition @(restrict: [
         {
             grant: ['READ'],
             to: ['USER']
@@ -39,5 +39,52 @@ service BasicService @(requires: 'authenticated-user') {
             grant: ['*'],
             to: ['ADMIN']
         }
-    ]) as projection on northwind.Products;
+    ]) as projection on sf.Position;
+
+
+        entity SFUser @(restrict: [
+        {
+            grant: ['READ'],
+            to: ['USER']
+        },
+        {
+            grant: ['READ', 'UPDATE', 'CREATE'],
+            to: ['MANAGER']
+        },
+        {
+            grant: ['*'],
+            to: ['ADMIN']
+        }
+    ]) as projection on sf.User;
+
+    entity SFDivision @(restrict: [
+        {
+            grant: ['READ'],
+            to: ['USER']
+        },
+        {
+            grant: ['READ', 'UPDATE', 'CREATE'],
+            to: ['MANAGER']
+        },
+        {
+            grant: ['*'],
+            to: ['ADMIN']
+        }
+    ]) as projection on sf.FODivision;
+
+    
+    entity SFDepartment @(restrict: [
+        {
+            grant: ['READ'],
+            to: ['USER']
+        },
+        {
+            grant: ['READ', 'UPDATE', 'CREATE'],
+            to: ['MANAGER']
+        },
+        {
+            grant: ['*'],
+            to: ['ADMIN']
+        }
+    ]) as projection on sf.FODepartment;
 }

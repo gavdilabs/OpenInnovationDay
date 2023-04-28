@@ -1,78 +1,4 @@
 export interface IUser {
-  ID: string;
-  createdAt?: Date;
-  createdBy?: string;
-  modifiedAt?: Date;
-  modifiedBy?: string;
-  firstName: string;
-  lastName: string;
-  userName: string;
-  email: string;
-}
-
-export interface ISFPosition {
-  code: string;
-  effectiveStartDate: Date;
-  businessUnit: string;
-  changeReason: string;
-  comment: string;
-  company: string;
-  costCenter: string;
-  createdBy?: string;
-  createdDateTime: Date;
-  creationSource: string;
-  criticality: number;
-  cust_jobFunction: string;
-  department: string;
-  description: string;
-  division: string;
-  effectiveEndDate: Date;
-  effectiveStatus: string;
-  employeeClass: string;
-  externalName_ar_SA: string;
-  externalName_da_DK: string;
-  externalName_de_DE: string;
-  externalName_defaultValue: string;
-  externalName_en_DEBUG: string;
-  externalName_en_GB: string;
-  externalName_en_US: string;
-  externalName_fr_FR: string;
-  externalName_localized: string;
-  externalName_nl_NL: string;
-  externalName_pl_PL: string;
-  externalName_sv_SE: string;
-  incumbent: string;
-  jobCode: string;
-  jobLevel: string;
-  jobTitle: string;
-  lastModifiedBy: string;
-  lastModifiedDateTime: Date;
-  legacyPositionId: number;
-  location: string;
-  mdfSystemOptimisticLockUUID: string;
-  mdfSystemRecordStatus: string;
-  multipleIncumbentsAllowed: boolean;
-  payGrade: string;
-  payRange: string;
-  positionControlled: boolean;
-  positionCriticality: string;
-  positionTitle: string;
-  regularTemporary: string;
-  standardHours: number;
-  targetFTE: number;
-  technicalParameters: string;
-  transactionSequence: number;
-  type: string;
-  vacant: boolean;
-  createdByNav?: ISFUser;
-  departmentNav?: ISFDepartment;
-  divisionNav?: ISFDivision;
-  incumbentNav?: ISFUser;
-  lastModifiedByNav?: ISFUser;
-  parentPosition?: ISFPosition;
-}
-
-export interface ISFUser {
   userId: string;
   addressLine1: string;
   addressLine2: string;
@@ -216,23 +142,23 @@ export interface ISFUser {
   veteranProtected: boolean;
   veteranSeparated: boolean;
   zipCode: string;
-  customManager?: ISFUser[];
-  customReports?: ISFUser[];
-  directReports?: ISFUser[];
-  headOfUnitOfFODepartmentNav?: ISFDepartment[];
-  headOfUnitOfFODivisionNav?: ISFDivision[];
-  hr?: ISFUser;
-  hrReports?: ISFUser[];
-  incumbentOfPositionNav?: ISFPosition[];
-  manager?: ISFUser;
-  matrixManager?: ISFUser[];
-  matrixReports?: ISFUser[];
-  proxy?: ISFUser[];
-  secondManager?: ISFUser;
-  secondReports?: ISFUser[];
+  customManager?: IUser[];
+  customReports?: IUser[];
+  directReports?: IUser[];
+  headOfUnitOfFODepartmentNav?: IFODepartment[];
+  headOfUnitOfFODivisionNav?: IFODivision[];
+  hr?: IUser;
+  hrReports?: IUser[];
+  incumbentOfPositionNav?: IPosition[];
+  manager?: IUser;
+  matrixManager?: IUser[];
+  matrixReports?: IUser[];
+  proxy?: IUser[];
+  secondManager?: IUser;
+  secondReports?: IUser[];
 }
 
-export interface ISFDivision {
+export interface IFODivision {
   externalCode: string;
   startDate: Date;
   createdBy?: string;
@@ -273,12 +199,12 @@ export interface ISFDivision {
   name_pl_PL: string;
   name_sv_SE: string;
   status: string;
-  createdByNav?: ISFUser;
-  headOfUnitNav?: ISFUser;
-  lastModifiedByNav?: ISFUser;
+  createdByNav?: IUser;
+  headOfUnitNav?: IUser;
+  lastModifiedByNav?: IUser;
 }
 
-export interface ISFDepartment {
+export interface IFODepartment {
   externalCode: string;
   startDate: Date;
   costCenter: string;
@@ -321,25 +247,85 @@ export interface ISFDepartment {
   name_sv_SE: string;
   parent: string;
   status: string;
-  createdByNav?: ISFUser;
-  cust_Division?: ISFDivision[];
-  headOfUnitNav?: ISFUser;
-  lastModifiedByNav?: ISFUser;
-  parentNav?: ISFDepartment;
+  createdByNav?: IUser;
+  cust_Division?: IFODivision[];
+  headOfUnitNav?: IUser;
+  lastModifiedByNav?: IUser;
+  parentNav?: IFODepartment;
+}
+
+export interface IPosition {
+  code: string;
+  effectiveStartDate: Date;
+  businessUnit: string;
+  changeReason: string;
+  comment: string;
+  company: string;
+  costCenter: string;
+  createdBy?: string;
+  createdDateTime: Date;
+  creationSource: string;
+  criticality: number;
+  cust_jobFunction: string;
+  department: string;
+  description: string;
+  division: string;
+  effectiveEndDate: Date;
+  effectiveStatus: string;
+  employeeClass: string;
+  externalName_ar_SA: string;
+  externalName_da_DK: string;
+  externalName_de_DE: string;
+  externalName_defaultValue: string;
+  externalName_en_DEBUG: string;
+  externalName_en_GB: string;
+  externalName_en_US: string;
+  externalName_fr_FR: string;
+  externalName_localized: string;
+  externalName_nl_NL: string;
+  externalName_pl_PL: string;
+  externalName_sv_SE: string;
+  incumbent: string;
+  jobCode: string;
+  jobLevel: string;
+  jobTitle: string;
+  lastModifiedBy: string;
+  lastModifiedDateTime: Date;
+  legacyPositionId: number;
+  location: string;
+  mdfSystemOptimisticLockUUID: string;
+  mdfSystemRecordStatus: string;
+  multipleIncumbentsAllowed: boolean;
+  payGrade: string;
+  payRange: string;
+  positionControlled: boolean;
+  positionCriticality: string;
+  positionTitle: string;
+  regularTemporary: string;
+  standardHours: number;
+  targetFTE: number;
+  technicalParameters: string;
+  transactionSequence: number;
+  type: string;
+  vacant: boolean;
+  createdByNav?: IUser;
+  departmentNav?: IFODepartment;
+  divisionNav?: IFODivision;
+  incumbentNav?: IUser;
+  lastModifiedByNav?: IUser;
+  parentPosition?: IPosition;
 }
 
 export enum Entity {
-  User = "BasicService.User",
-  SFPosition = "BasicService.SFPosition",
-  SFUser = "BasicService.SFUser",
-  SFDivision = "BasicService.SFDivision",
-  SFDepartment = "BasicService.SFDepartment",
+  User = "sf.User",
+  FODivision = "sf.FODivision",
+  FODepartment = "sf.FODepartment",
+  Position = "sf.Position",
 }
 
 export enum SanitizedEntity {
   User = "User",
-  SFPosition = "SFPosition",
-  SFUser = "SFUser",
-  SFDivision = "SFDivision",
-  SFDepartment = "SFDepartment",
+  FODivision = "FODivision",
+  FODepartment = "FODepartment",
+  Position = "Position",
 }
