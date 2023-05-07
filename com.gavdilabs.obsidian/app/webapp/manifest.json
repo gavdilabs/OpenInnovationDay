@@ -58,6 +58,11 @@
                     "bundleName": "com.gavdilabs.ui5template.i18n.i18n"
                 }
             },
+            "Countries": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "model/Countries.json"
+			},
             "": {
                 "dataSource": "mainService",
                 "preload": true,
@@ -83,12 +88,30 @@
                     "pattern": "",
                     "name": "main",
                     "target": "main"
+                },
+                {
+                    "pattern": "country",
+                    "name": "country",
+                    "target": "country"
+                },
+                {
+                    "pattern": "group",
+                    "name": "group",
+                    "target": "group"
                 }
             ],
             "targets": {
                 "main": {
                     "viewId": "main",
                     "viewName": "Main"
+                },
+                "country": {
+                    "viewId": "country",
+                    "viewName": "Country"
+                },
+                "group": {
+                    "viewId": "group",
+                    "viewName": "Group"
                 }
             }
         }

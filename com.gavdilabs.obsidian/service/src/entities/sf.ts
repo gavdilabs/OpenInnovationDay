@@ -1,4 +1,64 @@
-export interface ISFUser {
+export interface IPosition {
+  code: string;
+  effectiveStartDate: Date;
+  businessUnit: string;
+  changeReason: string;
+  comment: string;
+  company: string;
+  costCenter: string;
+  createdBy?: string;
+  createdDateTime: Date;
+  creationSource: string;
+  criticality: number;
+  cust_jobFunction: string;
+  department: string;
+  description: string;
+  division: string;
+  effectiveEndDate: Date;
+  effectiveStatus: string;
+  employeeClass: string;
+  externalName_ar_SA: string;
+  externalName_da_DK: string;
+  externalName_de_DE: string;
+  externalName_defaultValue: string;
+  externalName_en_DEBUG: string;
+  externalName_en_GB: string;
+  externalName_en_US: string;
+  externalName_fr_FR: string;
+  externalName_localized: string;
+  externalName_nl_NL: string;
+  externalName_pl_PL: string;
+  externalName_sv_SE: string;
+  incumbent: string;
+  jobCode: string;
+  jobLevel: string;
+  jobTitle: string;
+  lastModifiedBy: string;
+  lastModifiedDateTime: Date;
+  legacyPositionId: number;
+  location: string;
+  mdfSystemOptimisticLockUUID: string;
+  mdfSystemRecordStatus: string;
+  multipleIncumbentsAllowed: boolean;
+  payGrade: string;
+  payRange: string;
+  positionControlled: boolean;
+  positionCriticality: string;
+  positionTitle: string;
+  regularTemporary: string;
+  standardHours: number;
+  targetFTE: number;
+  technicalParameters: string;
+  transactionSequence: number;
+  type: string;
+  vacant: boolean;
+  createdByNav?: IUser;
+  incumbentNav?: IUser;
+  lastModifiedByNav?: IUser;
+  parentPosition?: IPosition;
+}
+
+export interface IUser {
   userId: string;
   addressLine1: string;
   addressLine2: string;
@@ -142,86 +202,26 @@ export interface ISFUser {
   veteranProtected: boolean;
   veteranSeparated: boolean;
   zipCode: string;
-  customManager?: ISFUser[];
-  customReports?: ISFUser[];
-  directReports?: ISFUser[];
-  hr?: ISFUser;
-  hrReports?: ISFUser[];
-  incumbentOfPositionNav?: ISFPosition[];
-  manager?: ISFUser;
-  matrixManager?: ISFUser[];
-  matrixReports?: ISFUser[];
-  proxy?: ISFUser[];
-  secondManager?: ISFUser;
-  secondReports?: ISFUser[];
-}
-
-export interface ISFPosition {
-  code: string;
-  effectiveStartDate: Date;
-  businessUnit: string;
-  changeReason: string;
-  comment: string;
-  company: string;
-  costCenter: string;
-  createdBy?: string;
-  createdDateTime: Date;
-  creationSource: string;
-  criticality: number;
-  cust_jobFunction: string;
-  department: string;
-  description: string;
-  division: string;
-  effectiveEndDate: Date;
-  effectiveStatus: string;
-  employeeClass: string;
-  externalName_ar_SA: string;
-  externalName_da_DK: string;
-  externalName_de_DE: string;
-  externalName_defaultValue: string;
-  externalName_en_DEBUG: string;
-  externalName_en_GB: string;
-  externalName_en_US: string;
-  externalName_fr_FR: string;
-  externalName_localized: string;
-  externalName_nl_NL: string;
-  externalName_pl_PL: string;
-  externalName_sv_SE: string;
-  incumbent: string;
-  jobCode: string;
-  jobLevel: string;
-  jobTitle: string;
-  lastModifiedBy: string;
-  lastModifiedDateTime: Date;
-  legacyPositionId: number;
-  location: string;
-  mdfSystemOptimisticLockUUID: string;
-  mdfSystemRecordStatus: string;
-  multipleIncumbentsAllowed: boolean;
-  payGrade: string;
-  payRange: string;
-  positionControlled: boolean;
-  positionCriticality: string;
-  positionTitle: string;
-  regularTemporary: string;
-  standardHours: number;
-  targetFTE: number;
-  technicalParameters: string;
-  transactionSequence: number;
-  type: string;
-  vacant: boolean;
-  createdByNav?: ISFUser;
-  incumbentNav?: ISFUser;
-  lastModifiedByNav?: ISFUser;
-  parentPosition?: ISFPosition;
+  customManager?: IUser[];
+  customReports?: IUser[];
+  directReports?: IUser[];
+  hr?: IUser;
+  hrReports?: IUser[];
+  incumbentOfPositionNav?: IPosition[];
+  manager?: IUser;
+  matrixManager?: IUser[];
+  matrixReports?: IUser[];
+  proxy?: IUser[];
+  secondManager?: IUser;
+  secondReports?: IUser[];
 }
 
 export enum Entity {
-  SFUser = "BasicService.SFUser",
-  SFPosition = "BasicService.SFPosition",
+  Position = "sf.Position",
+  User = "sf.User",
 }
 
 export enum SanitizedEntity {
-  SFUser = "SFUser",
-  SFPosition = "SFPosition",
+  Position = "Position",
+  User = "User",
 }

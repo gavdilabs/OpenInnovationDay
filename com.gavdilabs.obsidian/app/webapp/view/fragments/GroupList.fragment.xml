@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns:m="sap.m"
+	xmlns="sap.ui.webc.fiori"
+	xmlns:core="sap.ui.core" controllerName="com.gavdilabs.ui5template.controller.Group">
+	<m:VBox height="100%">
+	<m:VBox height="95%">
+		<m:OverflowToolbar class="sapFDynamicPageAlignContent">
+			<m:ToolbarSpacer/>
+			<m:Input id = "groupListSearch" liveChange=".onEmployeeListSearch" width="25rem">
+				</m:Input>
+			<m:MenuButton icon="sap-icon://sort" useDefaultActionOnly="true">
+				<m:menu>
+					<m:Menu itemSelected="onMenuAction">
+						<m:MenuItem text="By Name" press=".onSortFirstName"/>
+					</m:Menu>
+				</m:menu>
+			</m:MenuButton>
+		</m:OverflowToolbar>
+		<m:List itemPress=".onClickedItem" growing="true">
+			<m:StandardListItem title="Global" description="Countries: All" type="Navigation" />
+			<m:StandardListItem title="EU" description="Countries: DK,SE,PL,FR" type="Navigation" />
+			<m:StandardListItem title="US Affirmative Action" description="Countries: US" type="Navigation" />
+		</m:List>
+	</m:VBox>
+	<m:VBox height="5%">
+	<m:OverflowToolbar height="4rem">
+			<m:ToolbarSpacer/>
+			 <m:Button
+				icon="sap-icon://add"
+				text="Add new group"
+				press="addNewGroup"/>
+		</m:OverflowToolbar>
+	</m:VBox>
+	</m:VBox>
+</core:FragmentDefinition>

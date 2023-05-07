@@ -12,4 +12,12 @@ export default class Main extends BaseController {
 		MessageBox.show("Hello World!");
 	}
 
+	public handleCountryNav() : void {
+		this.navTo("country");
+	}
+
+	public handleGroupNav() : void {
+		this.navTo("group");
+	}
+
 }

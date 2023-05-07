@@ -1,0 +1,34 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    controller = "com.gavdilabs.ui5template.controller.Country">
+<SelectDialog
+		id="mySelectDialog"
+		title="Edit processes"
+		search=".onSearch"
+		confirm=".onCloseProcessDialog"
+		cancel=".onCloseProcessDialog"
+        multiSelect="true"
+        contentHeight="auto"
+		>
+		<StandardListItem
+			title="EC"
+            selected="true"
+			type="Active" />
+        <StandardListItem
+			title="LMS"
+            selected="true"
+			type="Active" />
+        <StandardListItem
+			title="Competency"
+			type="Active" />
+        <StandardListItem
+			title="ELP"
+			type="Active" />
+        <StandardListItem
+			title="Skill"
+			type="Active" />
+        <StandardListItem
+			title="Doc"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

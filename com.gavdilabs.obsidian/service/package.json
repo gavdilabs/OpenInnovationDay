@@ -38,7 +38,7 @@
         "@sap-cloud-sdk/connectivity": "^2.12.1",
         "@sap-cloud-sdk/http-client": "^2.14.0",
         "@sap/audit-logging": "^5.5.3",
-        "@sap/cds": "^6.3.1",
+        "@sap/cds": "^6.7.1",
         "@sap/xsenv": "^3.2.2",
         "@sap/xssec": "^3.2.13",
         "cds-dbm": "^0.1.4",
@@ -91,6 +91,17 @@
                 "model": [
                     "srv"
                 ]
+            },
+            "sf": {
+                "kind": "odata-v2",
+                "model": "srv/external/sf",
+                "credentials": {
+                    "requestTimeout": 30000,
+                    "url": "https://api12preview.sapsf.eu/odata/v2",
+                    "authentication": "BasicAuthentication",
+                    "username": "GDSADMIN@gavdiasT3",
+                    "password": "TjWv7Sb@v7!l"
+                }
             }
         },
         "migrations": {

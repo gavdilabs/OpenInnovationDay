@@ -1,0 +1,12 @@
+{
+	"id" : "global", 
+    "name" : "Global"
+},
+{
+	"id" : "eu", 
+    "name" : "EU"
+},
+{
+	"id" : "usaa", 
+    "name" : "US Affirmative Action"
+}
