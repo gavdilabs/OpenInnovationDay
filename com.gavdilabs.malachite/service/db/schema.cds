@@ -1,4 +1,4 @@
-using {  managed, sap, cuid } from '@sap/cds/common';
+using {  managed, sap, cuid,  } from '@sap/cds/common';
 
 namespace schema;
 
@@ -8,4 +8,3 @@ entity User : cuid, managed {
     userName: String(100);
     email: String(255);
 }
-

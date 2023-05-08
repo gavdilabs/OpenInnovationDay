@@ -2,16 +2,224 @@
 	controllerName="com.gavdilabs.ui5template.controller.Main"
 	displayBlock="true"
 	xmlns="sap.m"
+	xmlns:card="sap.f.cards"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
 	xmlns:mvc="sap.ui.core.mvc">
 
-<List
-		items="{/User}"
-		headerText="Users"
-		growing="true"
-		growingThreshold="4"
-		growingScrollToLoad="false">
-		<StandardListItem
-            title="{firstName} {lastName}"
-			description="{userName}"/>
-	</List>
+		<f:DynamicPage id="dynamicPageId" showFooter="true">
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Onboarding 3.0"/>
+					</f:heading>
+					<f:content>
+
+					</f:content>
+					<f:actions>
+					<!--
+						<Button
+							text="Edit"
+							type="Emphasized"
+							press="toggleAreaPriority"/>
+						<Button
+							text="Delete"
+							type="Transparent"/>
+							-->
+						
+					</f:actions>
+					<f:navigationActions>
+						<Button
+							icon="sap-icon://full-screen"
+							type="Transparent" />
+						<Button
+							icon="sap-icon://decline"
+							type="Transparent" />
+					</f:navigationActions>
+				</f:DynamicPageTitle>
+			</f:title>
+			<!-- DynamicPage Header -->
+			<f:header>
+				<f:DynamicPageHeader pinnable="true">
+					<HBox>
+						<Avatar					
+							src="https://images.generated.photos/IbmmibriSwVO9Hqu3Uy6soqGCti90c791030XajgXCY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTk3MTIxLmpwZw.jpg"
+							displaySize="L"							
+							showBorder="true"/>
+						<FlexBox alignItems="Start" justifyContent="Center" direction="Column" class="sapUiSmallMarginBegin">
+							<HBox><Label text="Name:" class="sapUiTinyMargin"/><Input id="NameInput" value="Emilia"></Input></HBox>
+							<HBox><Label text="Jobtitle:" class="sapUiTinyMargin"/><Input id="JobInput" value="HR Technology Advisor" width="300px"></Input></HBox>
+					
+						</FlexBox>
+					</HBox>		
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<VBox width="100%">
+					
+					<HBox width="100%">
+					<f:Card class="sapUiSmallMargin" width="450px">
+						<f:header>
+							<card:Header
+								title="Meeting time"
+								iconSrc="sap-icon://away" />
+						</f:header>
+						<f:content>
+							<VBox
+								class="sapUiSmallMargin"
+								justifyContent="SpaceBetween">
+								<HBox class="sapUiSmallMargin" >
+									<ComboBox
+										placeholder="Location"
+										>
+										<core:Item key="1" text="Aalborg"/>
+										<core:Item key="2" text="Copenhagen"/>
+									</ComboBox>
+								</HBox>
+								<HBox class="sapUiSmallMargin">
+									<DateTimePicker
+										placeholder="Start time"
+										value= "{
+											'path': '/valueDTP3',
+											'type': 'sap.ui.model.type.DateTime',
+											'formatOptions': {
+												'pattern': 'M/d/yy h:mm a'
+											}
+										}"
+										change="handleChange"
+										/>
+									<DateTimePicker	
+										placeholder="End time"
+										value= "{
+											'path': '/valueDTP3',
+											'type': 'sap.ui.model.type.DateTime',
+											'formatOptions': {
+												'pattern': 'M/d/yy h:mm a'
+											}
+										}"
+										change="handleChange"/>
+								</HBox>
+								<HBox class="sapUiSmallMargin">
+									<MultiComboBox
+										placeholder="Attendees"
+										selectionChange="handleSelectionChange"
+										selectionFinish="handleSelectionFinish"
+										width="350px"
+										>
+										<core:Item key="1" text="Homer Simpson"/>
+										<core:Item key="2" text="Courtney Doe"/>
+										<core:Item key="3" text="Max Power"/>
+										<core:Item key="4" text="Christina Johnson"/>
+										<core:Item key="5" text="Edgar Poe"/>
+										<core:Item key="6" text="Howard Lovecraft"/>
+										<core:Item key="7" text="Corey Mason"/>
+										<core:Item key="8" text="Ayn Rand"/>
+										<core:Item key="9" text="Shirley Jackson"/>
+										<core:Item key="10" text="Shirley Jackson"/>
+									</MultiComboBox>
+								</HBox>
+							</VBox>
+						</f:content>
+					</f:Card>
+					<f:Card class="sapUiSmallMargin" width="450px">
+						<f:header>
+							<card:Header
+								title="Buddy"
+								iconSrc="sap-icon://person-placeholder" />
+						</f:header>
+						<f:content>
+							<VBox
+								class="sapUiSmallMargin"
+								justifyContent="SpaceBetween">
+								
+								<HBox class="sapUiSmallMargin">
+									<ComboBox
+										placeholder="Person"
+										width="350px"
+										>
+										<core:Item key="1" text="Homer Simpson"/>
+										<core:Item key="2" text="Courtney Doe"/>
+										<core:Item key="3" text="Max Power"/>
+										<core:Item key="4" text="Christina Johnson"/>
+										<core:Item key="5" text="Edgar Poe"/>
+										<core:Item key="6" text="Howard Lovecraft"/>
+										<core:Item key="7" text="Corey Mason"/>
+										<core:Item key="8" text="Ayn Rand"/>
+										<core:Item key="9" text="Shirley Jackson"/>
+										<core:Item key="10" text="Shirley Jackson"/>
+
+
+									</ComboBox>
+								</HBox>
+							</VBox>
+						</f:content>
+					</f:Card>
+					<f:Card class="sapUiSmallMargin" width="450px">
+						<f:header>
+							<card:Header
+								title="Equipment"
+								iconSrc="sap-icon://add-equipment" />
+						</f:header>
+						<f:content>
+							<VBox
+								class="sapUiSmallMargin"
+								justifyContent="SpaceBetween">
+								
+								<VBox class="sapUiSmallMargin">
+									<ComboBox
+										placeholder="Laptop"
+										class="sapUiSmallMarginBottom"
+										width="350px">
+										<core:Item key="1" text="PC"/>
+										<core:Item key="2" text="MacBook"/>
+									</ComboBox>
+									<ComboBox
+										placeholder="Mobile phone"
+									
+										width="350px">
+										<core:Item key="1" text="iPhone"/>
+										<core:Item key="2" text="OnePlus"/>
+									</ComboBox>
+								</VBox>
+							</VBox>
+						</f:content>
+					</f:Card>
+					</HBox>
+					<f:Card class="sapUiSmallMargin" width="100%">
+						<f:header>
+							<card:Header
+								title="Welcome message"
+								iconSrc="sap-icon://letter" />
+						</f:header>
+						<f:content>
+							<VBox
+								class="sapUiSmallMargin"
+								justifyContent="SpaceBetween">
+								<HBox>
+									<Label text="Style:" class="sapUiTinyMargin"/>
+									<Input id="InputTone" value="nice and cool" class="sapUiTinyMarginBegin"/>
+									<Button text="Generate" press="askChatGPT" class="sapUiTinyMarginBegin"/>
+								</HBox>
+								
+								<VBox class="sapUiSmallMargin">
+									<BusyIndicator id="CustomBusy" visible="false" customIconWidth="200px" customIconHeight="200px" customIcon="../images/image001.gif" class="sapUiTinyMarginBottom" />
+									<TextArea id="ResultMessage" cols="200" value="" rows="14" />
+								</VBox>
+							</VBox>
+						</f:content>
+					</f:Card>
+					
+				</VBox>
+				
+			</f:content>
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				<OverflowToolbar>
+					
+					<ToolbarSpacer/>
+					<Button type="Accept" text="Accept"/>
+					<Button type="Reject" text="Reject"/>
+				</OverflowToolbar>
+			</f:footer>
+		</f:DynamicPage>
 </mvc:View>

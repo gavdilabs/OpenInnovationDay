@@ -1,24 +1,14 @@
 using {schema} from '../db/schema';
-using { northwind } from './external/northwind';
+//using { northwind } from './external/northwind';
+using { sf } from './external/sf';
 
-service BasicService @(requires: 'authenticated-user') {
+service BasicService {
 
     // ======================= ENTITIES ============================
 
-    entity User @(restrict: [
-        {
-            grant: ['READ'],
-            to: ['USER']
-        },
-        {
-            grant: ['READ', 'UPDATE', 'CREATE'],
-            to: ['MANAGER']
-        },
-        {
-            grant: ['*'],
-            to: ['ADMIN']
-        }
-    ]) as projection on schema.User;
+   
+
+    entity User as projection on schema.User;
 
     // ==================== ACTION IMPORTS ==========================
 
@@ -26,6 +16,7 @@ service BasicService @(requires: 'authenticated-user') {
     // =================== FUNCTION IMPORTS ==========================
 
     // ================== EXTERNAL SERVICES ==========================
+    /*
     entity NWProduct @(restrict: [
         {
             grant: ['READ'],
@@ -40,4 +31,21 @@ service BasicService @(requires: 'authenticated-user') {
             to: ['ADMIN']
         }
     ]) as projection on northwind.Products;
+    */
+    
+    entity SFUser @(restrict: [
+        {
+            grant: ['READ'],
+            to: ['USER']
+        },
+        {
+            grant: ['READ', 'UPDATE', 'CREATE'],
+            to: ['MANAGER']
+        },
+        {
+            grant: ['*'],
+            to: ['ADMIN']
+        }
+    ]) as projection on sf.User;
+    
 }
