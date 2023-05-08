@@ -2,7 +2,7 @@
 	xmlns:l="sap.ui.layout"
 	xmlns="sap.m" displayBlock="true" height="100%">
 
-<Page id="sideContentContainerCountry" showHeader="false">
+<Page showHeader="false">
 		<l:DynamicSideContent id="DynamicSideContentCountry" sideContentFallDown="BelowM" sideContentPosition="Begin" sideContentVisibility="AlwaysShow" containerQuery="true">
 		</l:DynamicSideContent>
 	</Page>

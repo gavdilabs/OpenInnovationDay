@@ -13,11 +13,15 @@ export default class Main extends BaseController {
 	}
 
 	public handleCountryNav() : void {
-		this.navTo("country");
+		// set to nav to Poland
+		this.navTo("country", {countryID: "e596869d-f4c6-4ca6-a5a1-2d03abccaf61"});
 	}
 
 	public handleGroupNav() : void {
-		this.navTo("group");
+		// set to nav to Poland
+		this.navTo("group", {
+			groupID: "e596869d-f4c6-4ca6-a5a1-2d03abccaf39"
+		});
 	}
 
 }

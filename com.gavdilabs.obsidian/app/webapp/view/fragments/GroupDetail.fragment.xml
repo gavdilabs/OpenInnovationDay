@@ -10,7 +10,7 @@
             <uxap:ObjectPageDynamicHeaderTitle>
                 <uxap:expandedHeading>
                     <HBox>
-                        <Title text="Global" wrapping="true" />
+                        <Title text="{name}" wrapping="true" />
                     </HBox>
                 </uxap:expandedHeading>
                 <uxap:snappedHeading>
@@ -25,14 +25,6 @@
             </uxap:ObjectPageDynamicHeaderTitle>
         </uxap:headerTitle>
         <uxap:headerContent>
-            <!--
-            <HBox>
-
-                <form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" width="25rem">
-                    <Label text="Here would go" />
-                    <Text text="some header content" />
-                </form:SimpleForm>
-            </HBox>-->
         </uxap:headerContent>
         <uxap:sections>
             <uxap:ObjectPageSection title="LMS">

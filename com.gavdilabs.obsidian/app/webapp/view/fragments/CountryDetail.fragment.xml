@@ -10,12 +10,12 @@
             <uxap:ObjectPageDynamicHeaderTitle>
                 <uxap:expandedHeading>
                     <HBox>
-                        <Title text="Poland" wrapping="true" />
+                        <Title text="{name}" wrapping="true" />
                     </HBox>
                 </uxap:expandedHeading>
                 <uxap:snappedHeading>
                     <FlexBox fitContainer="true" alignItems="Center">
-                        <Title text="Poland" wrapping="true" />
+                        <Title text="{name}" wrapping="true" />
                     </FlexBox>
                 </uxap:snappedHeading>
                 <uxap:actions>
@@ -25,26 +25,19 @@
             </uxap:ObjectPageDynamicHeaderTitle>
         </uxap:headerTitle>
         <uxap:headerContent>
-        <HBox>
-<form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" width="25rem">
-            <Label text="Hide groups" />
-            <CheckBox selected="false" />               
-             </form:SimpleForm>
-            </HBox>
-            <!--
             <HBox>
                 <form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" width="25rem">
-                    <Label text="Here would go" />
-                    <Text text="some header content" />
+                    <Label text="Hide groups" />
+                    <CheckBox selected="false" />
                 </form:SimpleForm>
-            </HBox>-->
+            </HBox>
         </uxap:headerContent>
         <uxap:sections>
-         <uxap:ObjectPageSection title="LMS">
+            <uxap:ObjectPageSection title="LMS">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection showTitle = "true" title="EU" class="sapUiSmallMarginTop">
                         <uxap:blocks>
-                            <uitable:Table id="euLMStable" visibleRowCount="4"  selectionMode="None" ariaLabelledBy="title">
+                            <uitable:Table id="euLMStable" visibleRowCount="4" selectionMode="None" ariaLabelledBy="title">
                                 <uitable:extension>
                                     <OverflowToolbar style="Clear">
                                         <Title text="GDPR Complaince Course"/>
@@ -63,10 +56,10 @@
                     </uxap:ObjectPageSubSection>
                     <uxap:ObjectPageSubSection showTitle = "true" title="Global">
                         <uxap:blocks>
-                           <uitable:Table id="globalLMStable" visibleRowCount="4"  selectionMode="None" ariaLabelledBy="title">
+                            <uitable:Table id="globalLMStable" visibleRowCount="4" selectionMode="None" ariaLabelledBy="title">
                                 <uitable:extension>
                                     <OverflowToolbar style="Clear">
-                                        <Title  text="Code of Conduct Course"/>
+                                        <Title text="Code of Conduct Course"/>
                                     </OverflowToolbar>
                                 </uitable:extension>
                                 <uitable:columns>
@@ -86,9 +79,9 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection >
                         <uxap:blocks>
-                            <uitable:Table id="globalECtable" visibleRowCount="5"  selectionMode="None" ariaLabelledBy="title">
+                            <uitable:Table id="globalECtable" visibleRowCount="5" selectionMode="None" ariaLabelledBy="title">
                                 <uitable:extension>
-                                <Title text="Global" class="titleClass"/>
+                                    <Title text="Global" class="titleClass"/>
                                 </uitable:extension>
                                 <uitable:columns>
                                     <uitable:Column width="100%">
@@ -107,18 +100,12 @@
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection showTitle = "true" title="Country" class="sapUiSmallMarginTop">
                         <uxap:blocks>
-                            <uitable:Table id="countryDocumentstable" visibleRowCount="2"  selectionMode="Multi" ariaLabelledBy="title">
+                            <uitable:Table id="countryDocumentstable" visibleRowCount="2" selectionMode="Multi" ariaLabelledBy="title">
                                 <uitable:extension>
                                     <OverflowToolbar style="Clear">
-                                            <ToolbarSpacer/>
-                                            <Button
-                                                icon="sap-icon://delete"
-                                                tooltip="Add an item"
-                                                press="getSelectedIndices"/>
-                                            <Button
-                                                icon="sap-icon://add"
-                                                tooltip="Remove selected"
-                                                press="getContextByIndex"/>
+                                        <ToolbarSpacer/>
+                                        <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
+                                        <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
                                     </OverflowToolbar>
                                 </uitable:extension>
                                 <uitable:columns>
@@ -134,10 +121,10 @@
                     </uxap:ObjectPageSubSection>
                     <uxap:ObjectPageSubSection showTitle = "true" title="Global">
                         <uxap:blocks>
-                           <uitable:Table id="globalDocumentstable" visibleRowCount="2"  selectionMode="None" ariaLabelledBy="title">
+                            <uitable:Table id="globalDocumentstable" visibleRowCount="2" selectionMode="None" ariaLabelledBy="title">
                                 <uitable:extension>
                                     <OverflowToolbar style="Clear">
-                                        <Title  text="Code of Conduct Course"/>
+                                        <Title text="Code of Conduct Course"/>
                                     </OverflowToolbar>
                                 </uitable:extension>
                                 <uitable:columns>

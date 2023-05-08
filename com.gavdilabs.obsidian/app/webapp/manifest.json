@@ -58,14 +58,10 @@
                     "bundleName": "com.gavdilabs.ui5template.i18n.i18n"
                 }
             },
-            "Countries": {
-				"type": "sap.ui.model.json.JSONModel",
-				"settings": {},
-				"uri": "model/Countries.json"
-			},
             "": {
                 "dataSource": "mainService",
                 "preload": true,
+                "type": "sap.ui.model.odata.v4.ODataModel",
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
@@ -90,12 +86,12 @@
                     "target": "main"
                 },
                 {
-                    "pattern": "country",
+                    "pattern": "country/{countryID}",
                     "name": "country",
                     "target": "country"
                 },
                 {
-                    "pattern": "group",
+                    "pattern": "group/{groupID}",
                     "name": "group",
                     "target": "group"
                 }

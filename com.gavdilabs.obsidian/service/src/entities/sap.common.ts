@@ -1,9 +1,7 @@
-export type Locale = string;
-
 export interface ILanguages {
   name: string;
   descr: string;
-  code: Locale;
+  code: string;
   texts?: ILanguagesTexts[];
   localized?: ILanguagesTexts;
 }
@@ -26,21 +24,21 @@ export interface ICurrencies {
 }
 
 export interface ILanguagesTexts {
-  locale: Locale;
+  locale: string;
   name: string;
   descr: string;
-  code: Locale;
+  code: string;
 }
 
 export interface ICountriesTexts {
-  locale: Locale;
+  locale: string;
   name: string;
   descr: string;
   code: string;
 }
 
 export interface ICurrenciesTexts {
-  locale: Locale;
+  locale: string;
   name: string;
   descr: string;
   code: string;

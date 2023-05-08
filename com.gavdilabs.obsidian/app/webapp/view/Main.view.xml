@@ -4,7 +4,6 @@
 
 <Page title="Easy Comply">
 		<content>
-			<Text id="welcome" text="" visible="false" class="sapUiLargeMargin"></Text>
 			<TileContainer id="container">
 				<StandardTile id="tileGroup" visible="true" title="Group"
 					icon="sap-icon://company-view" iconDensityAware="false" press="handleGroupNav" />

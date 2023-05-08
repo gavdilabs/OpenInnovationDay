@@ -5,21 +5,21 @@
                 "strategy": "mock",
                 "users": {
                     "user": {
-                        "password": "1234",
+                        "password": "user",
                         "ID": "basicuser",
                         "roles": [
                             "USER"
                         ]
                     },
                     "manager": {
-                        "password": "1234",
+                        "password": "manager",
                         "ID": "basicmanager",
                         "roles": [
                             "MANAGER"
                         ]
                     },
                     "admin": {
-                        "password": "1234",
+                        "password": "admin",
                         "ID": "basicadmin",
                         "roles": [
                             "ADMIN"
