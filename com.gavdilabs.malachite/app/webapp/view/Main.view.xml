@@ -35,6 +35,11 @@
 						<Button
 							icon="sap-icon://decline"
 							type="Transparent" />
+						<Button
+							icon="sap-icon://decline"
+							type="Transparent" 
+							text="Candidate"
+							press="onNavToCandidate"/>
 					</f:navigationActions>
 				</f:DynamicPageTitle>
 			</f:title>

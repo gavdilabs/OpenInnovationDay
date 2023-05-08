@@ -87,6 +87,10 @@
 					"pattern": "detail/{reqid}",
 					"name": "detail",
 					"target": "detail"
+				},{
+					"pattern": "candidateinfo",
+					"name": "candidateinfo",
+					"target": "candidateinfo"
 				}
             ],
             "targets": {
@@ -97,6 +101,10 @@
                 "detail": {
 					"viewId": "detail",
 					"viewName": "Detail"
+				},
+                "candidateinfo": {
+					"viewId": "candidateinfo",
+					"viewName": "CandidateInfo"
 				}
             }
         }

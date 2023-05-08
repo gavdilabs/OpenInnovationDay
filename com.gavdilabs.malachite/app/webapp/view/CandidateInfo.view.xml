@@ -1,0 +1,108 @@
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.App" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:card="sap.f.cards"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<f:DynamicPage id="dynamicPageCandidate" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Onboarding 3.0"/>
+				</f:heading>
+				<f:content>
+
+				</f:content>
+				<f:actions>
+					<!-- <Button text="Edit" type="Emphasized" press="toggleAreaPriority"/> <Button text="Delete" type="Transparent"/>
+							-->
+
+				</f:actions>
+				<f:navigationActions>
+					<Button icon="sap-icon://full-screen" type="Transparent" />
+					<Button icon="sap-icon://decline" type="Transparent" />
+					<Button icon="sap-icon://decline" type="Transparent" text="Candidate" press="onNavToCandidate"/>
+				</f:navigationActions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<HBox>
+					<Avatar src="https://images.generated.photos/IbmmibriSwVO9Hqu3Uy6soqGCti90c791030XajgXCY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTk3MTIxLmpwZw.jpg" displaySize="L" showBorder="true"/>
+					<FlexBox alignItems="Start" justifyContent="Center" direction="Column" class="sapUiSmallMarginBegin">
+						<HBox>
+							<Text text="Emilia" class="sapUiTinyMargin"/>
+						</HBox>
+						<HBox>
+							<Text text="HR Technology Advisor" class="sapUiTinyMargin"/>
+						</HBox>
+
+						
+
+					</FlexBox>
+					<HBox alignItems="End">
+						<ProgressIndicator
+							class="sapUiSmallMarginBottom"
+							percentValue="30"
+							displayValue="30%"
+							showValue="true"
+							state="None" />
+					</HBox>
+				</HBox>
+				
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+		<HBox>
+
+			<Table id="idProductsTable"
+		inset="false" width="45%">
+
+			<columns>
+			<Column
+				width="12em">
+				<Text text="Status" />
+			</Column>
+			<Column
+				width="12em">
+				<Text text="Product" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Supplier" />
+			</Column>
+		</columns>
+
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<CheckBox selected="true" />
+					<Text
+						text="SupplierName" />
+					<Text
+						text="Width x Depth x Height DimUnit" />
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+		</Table>
+			<NotificationList>
+				<layoutData>
+					<FlexItemData maxWidth="40%" />
+				</layoutData>
+
+				<NotificationListItem title="{Title}" description="{Description}" showCloseButton="false" datetime="{CreatedDateTime}" unread="{Unread}" priority="{Priority}" close=".onItemClose" press=".onListItemPress" authorName="{AuthorName}" authorPicture="{Photo}" showButtons="true">
+					<buttons>
+						<Button visible="{= ${type === 'message'}}" text="Go To Message" press=".onGoToMessage" />
+					</buttons>
+				</NotificationListItem>
+
+			</NotificationList>
+			</HBox>
+		</f:content>
+	</f:DynamicPage>
+
+</mvc:View>
