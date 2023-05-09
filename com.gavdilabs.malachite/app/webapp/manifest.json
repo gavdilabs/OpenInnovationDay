@@ -81,8 +81,8 @@
             "routes": [
                 {
                     "pattern": "",
-                    "name": "main",
-                    "target": "main"
+                    "name": "candidateOverview",
+                    "target": "candidateOverview"
                 },{
 					"pattern": "detail/{reqid}",
 					"name": "detail",
@@ -94,9 +94,9 @@
 				}
             ],
             "targets": {
-                "main": {
-                    "viewId": "main",
-                    "viewName": "Main"
+                "candidateOverview": {
+                    "viewId": "candidateOverview",
+                    "viewName": "CandidateOverview"
                 },
                 "detail": {
 					"viewId": "detail",
