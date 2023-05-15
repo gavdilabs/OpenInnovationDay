@@ -74,14 +74,7 @@
     "typescript": "^4.7.2"
   },
   "cds": {
-    "requires": {
-      "northwind": {
-        "kind": "odata",
-        "model": "srv/external/northwind",
-        "credentials": {
-          "url": "https://services.odata.org/v4/northwind/northwind.svc/"
-        }
-      },
+    "requires": {      
       "db": {
         "kind": "postgres",
         "dialect": "plain"

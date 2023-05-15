@@ -4,39 +4,39 @@ namespace schema;
 
 define type Url             : String(255);
 
-entity User : cuid, managed {
+entity Users : cuid, managed {
     firstName: String(255);
     lastName: String(255);
     userName: String(100);
     email: String(255);
 }
 
-entity Action : cuid, managed {
+entity Actions : cuid, managed {
     type: String(2);
     title: String(50);
     status: String(2);
     description: String(255);
     initiator: String(2);
     priority: String(20);
-    onBoarding: Association to one Onboarding;
-    communication: Association to many Communication;
+    onBoarding: Association to one OnBoardings;
+    communications: Association to many Communications on communications.action = $self;
 }
 
-entity Communication: cuid, managed {    
+entity Communications: cuid, managed {    
     type: String(2);
     message: String(500);
     subject: String(50);  
-    action: Association to one Action;  
+    action: Association to one Actions;  
 }
 
-entity Onboarding : cuid, managed {    
+entity OnBoardings : cuid, managed {    
     engagement          : String;    
     status              : String;       
-    candidate           : Association to one Candidate;
-    action              : Association to many Action;
+    candidate           : Association to one Candidates;
+    actions            : Association to many Actions on actions.onBoarding = $self;
 }
 
-entity Candidate : cuid, managed {    
+entity Candidates : cuid, managed {    
     personId        : String;
     firstName       : String;
     lastName        : String;
@@ -49,5 +49,5 @@ entity Candidate : cuid, managed {
     email           : String;
     phone           : String;
     picture         : Url;   
-    onBoarding      : Association to one Onboarding;
+    onBoarding      : Association to one OnBoardings;
 }
