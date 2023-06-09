@@ -28,6 +28,16 @@ export default class Main extends BaseController {
 	private formatter = formatter;
 	private mPopover: Popover;
 
+	public onInit() : void {
+		// apply content density mode to root view
+		this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+		 this.getRouter().getRoute("main").attachPatternMatched(this._onPatternMatched, this);
+	}
+
+	private _onPatternMatched(event: Event) {
+
+	  }
+
 	public sayHello() : void {
 		MessageBox.show("Hello World!");
 	}

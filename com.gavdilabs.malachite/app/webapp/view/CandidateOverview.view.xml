@@ -3,7 +3,7 @@
 	xmlns:f="sap.f"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:layout="sap.ui.layout">
-	<f:FlexibleColumnLayout id="flcDocMetadataTypes" backgroundDesign="Translucent" layout="TwoColumnsMidExpanded">
+	<f:FlexibleColumnLayout id="flcDocMetadataTypes" backgroundDesign="Translucent" layout="OneColumn">
 		<f:beginColumnPages>
 			<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
 				<!-- DynamicPage Title -->
@@ -11,7 +11,9 @@
 					<f:DynamicPageTitle>
 						<f:heading>
 							<Title text="Candidate Overview"/>
+							
 						</f:heading>
+						
 					</f:DynamicPageTitle>
 				</f:title>
 
@@ -30,14 +32,18 @@
 								<Text text="Name" />
 							</Column>
 							<Column hAlign="End">
-								<Text text="Position" />
+								<Text text="Status" />
+							</Column>
+							<Column hAlign="End">
+								<Text text="Engagement" />
 							</Column>
 						</columns>
 						<items>
 							<ColumnListItem type="Navigation">
 								<cells>
 									<ObjectIdentifier title="{firstName} {lastName}" />
-									<ObjectIdentifier title="{onBoarding}" />
+									<ObjectIdentifier title="{onBoarding/status}" />
+									<ObjectIdentifier title="{onBoarding/engagement}" />
 								</cells>
 							</ColumnListItem>
 						</items>
@@ -55,63 +61,7 @@
 			</f:DynamicPage>
 		</f:beginColumnPages>
 		<f:midColumnPages>
-			<f:DynamicPage id="dynamicPageId2" showFooter="true">
-				<!-- DynamicPage Title -->
-				<f:title>
-					<f:DynamicPageTitle>
-						<f:heading>
-							<HBox>
-								<Avatar src="" class="sapUiTinyMarginEnd"/>
-								<Title text="Add name here"/>
-							</HBox>
-						</f:heading>
-
-						<f:expandedContent>
-							<Label text="Position"/>
-						</f:expandedContent>
-						<f:snappedContent>
-							<Label text="Position"/>
-						</f:snappedContent>
-						<f:snappedTitleOnMobile>
-							<Title text="Position"/>
-						</f:snappedTitleOnMobile>
-
-						<f:navigationActions>
-							<Button icon="sap-icon://full-screen" type="Transparent" />
-							<Button icon="sap-icon://decline" type="Transparent" />
-						</f:navigationActions>
-					</f:DynamicPageTitle>
-				</f:title>
-
-				<f:header>
-					<f:DynamicPageHeader pinnable="true">
-						<layout:HorizontalLayout allowWrapping="true">
-							<layout:VerticalLayout class="sapUiMediumMarginEnd">
-								<ObjectAttribute title="Email" text="Warehouse A"/>
-								<ObjectAttribute title="Phone" text="23L"/>
-							</layout:VerticalLayout>
-
-							<layout:VerticalLayout>
-								<ObjectAttribute title="Adress" text="34"/>
-								<ObjectAttribute title="Start Date" text="34"/>
-							</layout:VerticalLayout>
-						</layout:HorizontalLayout>
-					</f:DynamicPageHeader>
-				</f:header>
-				<!-- DynamicPage Content -->
-				<f:content>
-					<Text text="Private information"/>
-				</f:content>
-
-				<!-- DynamicPage Footer -->
-				<f:footer>
-					<OverflowToolbar>
-						<ToolbarSpacer/>
-						<Button type="Accept" text="Accept"/>
-						<Button type="Reject" text="Reject"/>
-					</OverflowToolbar>
-				</f:footer>
-			</f:DynamicPage>
+			<mvc:XMLView id="CandidateInfo" viewName="com.gavdilabs.ui5template.view.CandidateInfo"/>
 		</f:midColumnPages>
 	</f:FlexibleColumnLayout>
 </mvc:View>

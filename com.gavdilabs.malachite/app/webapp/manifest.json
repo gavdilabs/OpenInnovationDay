@@ -91,6 +91,10 @@
 					"pattern": "candidateinfo",
 					"name": "candidateinfo",
 					"target": "candidateinfo"
+				},{
+					"pattern": "main",
+					"name": "main",
+					"target": "main"
 				}
             ],
             "targets": {
@@ -103,8 +107,12 @@
 					"viewName": "Detail"
 				},
                 "candidateinfo": {
-					"viewId": "candidateinfo",
+					"viewId": "candidateInfo",
 					"viewName": "CandidateInfo"
+				},
+                "main": {
+					"viewId": "main",
+					"viewName": "Main"
 				}
             }
         }

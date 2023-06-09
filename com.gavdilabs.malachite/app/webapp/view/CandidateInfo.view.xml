@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.gavdilabs.ui5template.controller.App" displayBlock="true"
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.CandidateOverview" displayBlock="true"
 	xmlns="sap.m"
 	xmlns:card="sap.f.cards"
 	xmlns:core="sap.ui.core"
@@ -18,6 +18,8 @@
 
 				</f:actions>
 				<f:navigationActions>
+					<OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose"  tooltip="Close middle column"/>
+			
 				</f:navigationActions>
 			</f:DynamicPageTitle>
 		</f:title>
@@ -73,7 +75,7 @@
 					</f:header>
 					<f:content>
 						<NotificationList items="{ path: '/Actions'}">
-							<NotificationListItem title="{title}" description="{description}" showCloseButton="false" datetime="{createdAt}" unread="{= ${status} === '01'}" priority="{= ${priority} === '01' ? 'Low' : 'None'}" close=".onItemClose" press=".onListItemPress" authorName="{createdBy}" authorPicture="" showButtons="true">
+							<NotificationListItem title="{title}" description="{description}" showCloseButton="false" datetime="{createdAt}" unread="{= ${status} === '01'}" priority="{= ${priority} === '01' ? 'Low' : 'None'}" close=".onItemClose" press=".onActionitemsPress" authorName="{createdBy}" authorPicture="" showButtons="true">
 								<buttons>
 									<Button visible="{= ${type === 'message'}}" text="Go To Message" press=".onGoToMessage" />
 								</buttons>
