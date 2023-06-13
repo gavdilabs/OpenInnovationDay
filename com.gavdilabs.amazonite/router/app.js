@@ -35,9 +35,6 @@ router.use(express.static(`${__dirname}/`));
 // Custom middleware for logging all received requests
 router.beforeRequestHandler.use(morgan('combined'));
 
-// Setup custom request handlers
-// TODO: Custom handlers
-
 // App Tiles - List available apps from endpoint
 router.beforeRequestHandler.use("/custom", exampleCustomHandler);
 
@@ -45,6 +42,5 @@ router.beforeRequestHandler.use("/custom", exampleCustomHandler);
 router.start();
 router.get('/', function(req, res) {
 	res.sendFile('start/index.html');
-	console.log("[server] index served");
 });
 

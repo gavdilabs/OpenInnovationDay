@@ -1,0 +1,44 @@
+---
+_schema-version: '3.1'
+ID: easypermissions
+version: 1.0.0
+description: "GL Easy Permissions"
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx -p @sap/cds-dk cds build --production
+modules:
+  - name: easypermissions-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm-ci
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: easypermissions-uaa
+      - name: easypermissions-destination
+
+resources:
+  - name: easypermissions-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: easypermissions-${org}-${space}
+        tenant-mode: dedicated
+
+  - name: easypermissions-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite

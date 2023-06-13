@@ -58,13 +58,18 @@
                     "bundleName": "com.gavdilabs.ui5template.i18n.i18n"
                 }
             },
+            "DefaultProfileImg": {
+                "type": "sap.ui.model.json.JSONModel",
+                "uri": "model/defaultProfileImage.json",
+                "preload": true
+            },
             "": {
                 "dataSource": "mainService",
                 "preload": true,
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
-                    "autoExpandSelect": true,
+                    "autoExpandSelect": false,
                     "earlyRequests": true
                 }
             }
@@ -78,17 +83,25 @@
                 "controlAggregation": "pages",
                 "async": true
             },
-            "routes": [
-                {
+            "routes": [{
                     "pattern": "",
                     "name": "main",
                     "target": "main"
+                },
+                {
+                    "pattern": "role",
+                    "name": "role",
+                    "target": "role"
                 }
             ],
             "targets": {
                 "main": {
                     "viewId": "main",
                     "viewName": "Main"
+                },
+                "role": {
+                    "viewId": "role",
+                    "viewName": "Role"
                 }
             }
         }
