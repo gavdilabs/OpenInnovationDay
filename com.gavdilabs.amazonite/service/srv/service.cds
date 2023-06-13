@@ -1,43 +1,79 @@
-using {schema} from '../db/schema';
-using { northwind } from './external/northwind';
+using {sf} from './external/sf';
 
-service BasicService @(requires: 'authenticated-user') {
+service EasyPermissionService @(requires: 'authenticated-user') {
 
-    // ======================= ENTITIES ============================
+    // =================== LOACAL ENTITIES ==========================
+    entity Roles @(restrict: [{
+        grant: ['*'],
+        to   : ['ADMIN']
+    }]) {
+        key userId : String(100);
+            roles  : many {
+                name   : String(100);
+                access : String(100);
+                target : String(100);
+            }
+    };
 
+    entity Permissions @(restrict: [{
+        grant: ['*'],
+        to   : ['ADMIN']
+    }]) {
+        key userId : String(100);
+            roles  : many {
+                role            : String(100);
+                roleDescription : String;
+                permissions     : many {
+                    name        : String(100);
+                    category    : String(100);
+                    type        : String(255);
+                    permission  : String(255);
+                    description : String;
+                }
+            }
+    };
+
+    // =================== REMOTE 'FUNCTION IMPORT' PROJECTIONS ==========================
+
+    // =================== REMOTE ENTITIY PROJECTIONS ==========================
     entity User @(restrict: [
         {
             grant: ['READ'],
-            to: ['USER']
+            to   : ['USER']
         },
         {
-            grant: ['READ', 'UPDATE', 'CREATE'],
-            to: ['MANAGER']
+            grant: ['READ', ],
+            to   : ['MANAGER']
         },
         {
             grant: ['*'],
-            to: ['ADMIN']
+            to   : ['ADMIN']
         }
-    ]) as projection on schema.User;
+    ]) as projection on sf.User {
+        key userId,
+            firstName,
+            lastName
+    };
 
-    // ==================== ACTION IMPORTS ==========================
-
-
-    // =================== FUNCTION IMPORTS ==========================
-
-    // ================== EXTERNAL SERVICES ==========================
-    entity NWProduct @(restrict: [
+    entity Photo @(restrict: [
         {
             grant: ['READ'],
-            to: ['USER']
+            to   : ['USER']
         },
         {
-            grant: ['READ', 'UPDATE', 'CREATE'],
-            to: ['MANAGER']
+            grant: ['READ', ],
+            to   : ['MANAGER']
         },
         {
             grant: ['*'],
-            to: ['ADMIN']
+            to   : ['ADMIN']
         }
-    ]) as projection on northwind.Products;
+    ]) as projection on sf.Photo {
+        key userId,
+            photoType,
+            photo,
+            mimeType
+    };
+
+
 }

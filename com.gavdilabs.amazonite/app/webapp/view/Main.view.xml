@@ -1,17 +1,143 @@
-<mvc:View
-	controllerName="com.gavdilabs.ui5template.controller.Main"
-	displayBlock="true"
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.Main" displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
+	<Toolbar>
+		<Title text="User Access Analyzer" />
+		<ToolbarSpacer/>
+	</Toolbar>
+	<VBox class="sapUiLargeMargin">
+		<!-- Username input -->
+		
+		<HBox alignItems="Center">
+			<VBox alignItems="Center" alignContent="Center" justifyContent="Center" class="sapUiTinyMargin">
+				<HBox class="sapUiSmallMargin">
+					<Label class="sapUiTinyMarginTop sapUiTinyMarginEnd" text="User 1:"  required="true"  />
+					<Input enabled="{=${app>/isBusy} === false}"  submit="onSearchUser" placeholder="Enter username 1" value="{app>/value1}" busy="{app>/isBusy}"
+						autocomplete="false" showSuggestion="true" showTableSuggestionValueHelp="false" showValueHelp="false" width="350px"
+						suggestionRows="{path : '/User', templateShareable:false, sorter: [
+									{ path: 'firstName', descending: false },
+									{ path: 'lastName', descending: false },
+									{ path: 'userId', descending: false }]}">
+							<suggestionColumns>
+							<Column  width="100px"  hAlign="Begin">
+								<Text text="ID"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Name"/>
+							</Column>
+						</suggestionColumns>
+						<suggestionRows>
+							<ColumnListItem>
+								<cells>
+									<Label text="{userId}"/>
+									<Label text="{firstName} {lastName}"/>
+								</cells>
+							</ColumnListItem>
+						</suggestionRows>
+					</Input>
+				</HBox>
+				
+				<HBox class="sapUiSmallMargin">
+					<Label class="sapUiTinyMarginTop sapUiTinyMarginEnd" text="User 2:" />
+					<Input enabled="{=${app>/isBusy} === false}"  submit="onSearchUser" placeholder="Enter username 2" value="{app>/value2}" busy="{app>/isBusy}"
+						autocomplete="false" showSuggestion="true" showTableSuggestionValueHelp="false" showValueHelp="false" width="350px"
+						suggestionRows="{path : '/User', templateShareable:false, sorter: [
+									{ path: 'firstName', descending: false },
+									{ path: 'lastName', descending: false },
+									{ path: 'userId', descending: false }]}">
+							<suggestionColumns>
+							<Column  width="100px"  hAlign="Begin">
+								<Text text="ID"/>
+							</Column>
+							<Column hAlign="End">
+								<Text text="Name"/>
+							</Column>
+						</suggestionColumns>
+						<suggestionRows>
+							<ColumnListItem>
+								<cells>
+									<Label text="{userId}"/>
+									<Label text="{firstName} {lastName}"/>
+								</cells>
+							</ColumnListItem>
+						</suggestionRows>
+					</Input>
+				</HBox>
+			</VBox>
+			<Button class="sapUiSmallMargin sapUiMediumMarginTop" text="Search" icon="sap-icon://search"  press="onSearchUser" type="Emphasized"   />
+		</HBox>
+		
 
-<List
-		items="{/User}"
-		headerText="Users"
-		growing="true"
-		growingThreshold="4"
-		growingScrollToLoad="false">
-		<StandardListItem
-            title="{firstName} {lastName}"
-			description="{userName}"/>
-	</List>
+		<!-- <HBox width="100%"> -->
+			<VBox width="100%" alignItems="Center" > <!-- class="sapUiMediumMarginTop" -->
+				<VBox width="100%" alignItems="Stretch">
+					<HBox justifyContent="SpaceBetween">
+						<HBox alignItems="Center">
+							<Image id="photoUser1" class="sapUiSmallMargin" src="{UserDetails>/user1/photo}" width="8rem" />
+							<VBox alignItems="Start">
+								<Text class="sapUiTinyMarginBeginEnd" text="{UserDetails>/user1/firstName} {UserDetails>/user1/lastName}"/>
+								<Text class="sapUiTinyMarginBeginEnd" text="{= ${UserDetails>/user1/userId} ? '('+${UserDetails>/user1/userId}+')' : '' }"/>
+							</VBox>
+						</HBox>
+						<HBox justifyContent="Center" alignItems="End">
+							<Title class="sapUiSmallMargin" text="Role" />
+						</HBox>
+						<HBox alignItems="Center">
+							<VBox alignItems="End">
+								<Text class="sapUiTinyMarginBeginEnd" text="{UserDetails>/user2/firstName} {UserDetails>/user2/lastName}"/>
+								<Text class="sapUiTinyMarginBeginEnd" text="{= ${UserDetails>/user2/userId} ? '('+${UserDetails>/user2/userId}+')' : '' }"/>
+							</VBox>
+							<Image id="photoUser2" class="sapUiSmallMargin"  src="{UserDetails>/user2/photo}" width="8rem"/>
+						</HBox>
+					</HBox>
+				</VBox>
+				
+				<ScrollContainer height="400px" width="100%" vertical="true" horizontal="false" focusable="true" class="sapUiTinyMarginBottom">
+					<Table mode="None" noDataText="No Data" growing="true" growingThreshold="20" sticky="ColumnHeaders" busy="{app>/isBusy}" busyIndicatorDelay="0"	
+	    				items="{Roles>/roles/}">
+						<columns>
+							<Column  width="200px" visible="{= ${UserDetails>/user1/userId} ? true : false }"  hAlign="Center" >
+								
+							</Column>
+							<Column hAlign="Center" >
+								
+							</Column>
+							<Column width="200px" visible="{= ${UserDetails>/user2/userId} ? true : false}" hAlign="Center">
+								
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem >
+								<cells>
+									<VBox >
+										<ObjectStatus visible="{= (${Roles>source} ? ${Roles>source/array1} : false ) || ( !${Roles>source} &amp;&amp; ${UserDetails>/user1/userId} ? true : false) }"  inverted="true"  icon="sap-icon://status-positive" state="Success" />
+										<ObjectStatus visible="{= ${Roles>source} ? !${Roles>source/array1} : false }" inverted="true"  icon="sap-icon://status-negative" state="Error" />
+										
+									</VBox>
+									<Text text="{Roles>name}" />
+									<VBox visible="{= ${Roles>source} ? true : false}">
+										<ObjectStatus visible="{= ${Roles>source} ? ${Roles>source/array2} : false }"  inverted="true"  icon="sap-icon://status-positive" state="Success" />
+										<ObjectStatus visible="{= ${Roles>source} ? !${Roles>source/array2} : false }" inverted="true"  icon="sap-icon://status-negative" state="Error" />
+									</VBox>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</ScrollContainer>
+
+				<!-- List of Groups -->
+				<!-- <List width="80%" class="sapUiTinyMargin" id="listGroups" headerText="Groups" growing="true" growingThreshold="10" growingScrollToLoad="false" /> -->
+
+			</VBox>
+
+			<!-- <VBox width="50%"> -->
+				<!-- <Input placeholder="Search" width="80%" class="sapUiTinyMarginBottom" /> -->
+				<!-- List of Groups -->
+				<!-- <ScrollContainer height="300px" width="80%" vertical="true" horizontal="false" focusable="true" class="sapUiTinyMarginBottom">
+					<List width="100%" class="sapUiTinyMargin" id="listPermissions" headerText="Permissions" growing="false" growingThreshold="5" growingScrollToLoad="false" />
+				</ScrollContainer> -->
+			<!-- </VBox> -->
+		<!-- </HBox> -->
+
+	</VBox>
 </mvc:View>
