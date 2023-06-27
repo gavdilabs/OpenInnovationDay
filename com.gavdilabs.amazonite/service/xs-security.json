@@ -19,19 +19,9 @@
     "attributes": [],
     "role-templates": [
         {
-            "name": "USER",
+            "name": "GLEPUSER",
             "description": "User Role",
             "scope-references": ["$XSAPPNAME.USER"]
-        },
-        {
-            "name": "MANAGER",
-            "description": "Manager Role",
-            "scope-references": ["$XSAPPNAME.MANAGER"]
-        },
-        {
-            "name": "ADMIN",
-            "description": "Admin Role",
-            "scope-references": ["$XSAPPNAME.ADMIN"]
         }
     ]
 }
