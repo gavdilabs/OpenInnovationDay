@@ -18,7 +18,7 @@ export default class CandidateOverview extends BaseController {
 
 		oPage.setProperty("layout", LayoutType.TwoColumnsMidExpanded) 
 
-		
+		 
 	}
 
 	handleClose(oEvent:Event) : void {
@@ -27,5 +27,10 @@ export default class CandidateOverview extends BaseController {
 		oPage.setProperty("layout", LayoutType.OneColumn) 
 	}
 
+	onGoToMessage(oEvent:Event) : void {
+		//TODO: get selected Leads and its Customer ID.
+		//TODO: Send ID with navigation
+		this.getRouter().navTo("main");
+	}
 
 }
