@@ -5,7 +5,7 @@
 		<m:OverflowToolbar class="sapFDynamicPageAlignContent">
 			<m:ToolbarSpacer/>
 			<m:Input id = "countryListSearch" width="20rem">
-				</m:Input>
+			</m:Input>
 			<m:MenuButton icon="sap-icon://sort" useDefaultActionOnly="true">
 				<m:menu>
 					<m:Menu itemSelected="onMenuAction">
@@ -14,8 +14,8 @@
 				</m:menu>
 			</m:MenuButton>
 		</m:OverflowToolbar>
-		<m:List id="CountryList" itemPress=".onClickedItem" growing="true" items="{/Country}">
-			<m:StandardListItem title="{name}" description="Groups: " type="Navigation" />
+		<m:List id="CountryList" itemPress=".onClickedItem" growing="true" items="{path: '/Country', parameters: {$expand: 'groups', $select: 'groups/group/name'}}">
+			<m:StandardListItem title="{name}" description="{path: 'groups', mode : 'OneTime', targetType : 'any', formatter: '.formatter.groupsToString'}" type="Navigation" />
 		</m:List>
 	</m:VBox>
 </core:FragmentDefinition>

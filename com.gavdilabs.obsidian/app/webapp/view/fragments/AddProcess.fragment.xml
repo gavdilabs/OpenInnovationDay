@@ -1,16 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m"
     xmlns:core="sap.ui.core"
     controller = "com.gavdilabs.ui5template.controller.Group">
-    <Dialog title="Generation of the contract" class="sapUiResponsiveContentPadding">
-
+    <Dialog title="Add process" class="sapUiResponsiveContentPadding">
         <content>
-            <ComboBox>
-                <core:Item text="EC"/>
-                <core:Item text="LMS"/>
-                <core:Item text="Competency"/>
-                <core:Item text="ELP"/>
-                <core:Item text="Skill"/>
-                <core:Item text="Doc"/>
+            <ComboBox items="{/Rule}">
+                <core:Item text="{name}"/>
             </ComboBox>
         </content>
         <beginButton>

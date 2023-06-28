@@ -15,15 +15,14 @@ entity Country : cuid, managed {
     name: String(255);
     countryCode: String(255);
     groups: Association to many CountryToGroup on groups.countryID = $self.ID;
-    rulesets: Association to many RulesSetCountry on rulesets.countryID = $self.ID;
+    rulesets: Association to many RulesSet on rulesets.targetID = $self.ID and rulesets.targetType = 'country';
 }
 
 entity Group : cuid, managed {
     key ID: UUID;
     name: String(255);
     countries: Association to many CountryToGroup on countries.groupID = $self.ID;
-    rulesets: Association to many RulesSetGroup on rulesets.groupID = $self.ID;
-
+    rulesets: Association to many RulesSet on rulesets.targetID = $self.ID and rulesets.targetType = 'group';
 }
 
 entity CountryToGroup : cuid, managed {
@@ -38,24 +37,15 @@ entity CountryToGroup : cuid, managed {
 entity Rule : cuid, managed {
     key ID: UUID;
     name: String(255);
+    rulesets: Association to many RulesSet on rulesets.ruleID = $self.ID;
 }
 
-entity RulesSetCountry : cuid, managed {
+entity RulesSet : cuid, managed {
     key ID: UUID;
     ruleID: String(255);
-    countryID: String(255);
+    targetID: String(255);
+    targetType: String(255);
     title: String(255);
-    country: Association to Country on country.ID = $self.countryID;
-    rule: Association to Rule on rule.ID = $self.ruleID;
-    dataentries: Association to many RulesEntry on dataentries.rulesetID = $self.ID;
-}
-
-entity RulesSetGroup : cuid, managed {
-    key ID: UUID;
-    ruleID: String(255);
-    groupID: String(255);
-    title: String(255);
-    group: Association to Group on group.ID = $self.groupID;
     rule: Association to Rule on rule.ID = $self.ruleID;
     dataentries: Association to many RulesEntry on dataentries.rulesetID = $self.ID;
 }

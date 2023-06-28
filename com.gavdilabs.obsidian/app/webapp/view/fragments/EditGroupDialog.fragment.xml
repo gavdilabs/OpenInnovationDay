@@ -1,26 +1,7 @@
 <core:FragmentDefinition xmlns="sap.m"
-    xmlns:core="sap.ui.core"
+	xmlns:core="sap.ui.core"
     controller = "com.gavdilabs.ui5template.controller.Country">
-<SelectDialog
-		id="editGroupDialog"
-		title="Edit group"
-		search=".onSearch"
-		confirm=".onCloseGroupDialog"
-		cancel=".onCloseGroupDialog"
-        multiSelect="true"
-		contentHeight="auto"
-		>
-		<StandardListItem
-			title="Global"
-            selected="true"
-			type="Active" />
-        <StandardListItem
-			title="EU"
-            selected="true"
-			type="Active" />
-		<StandardListItem
-			title="US Affirmative Action"
-            selected="false"
-			type="Active" />
+	<SelectDialog id="editGroupDialog" title="Edit group" search=".onSearch" confirm=".onCloseGroupDialog" cancel=".onCloseGroupDialog" multiSelect="true" contentHeight="auto" items="{/Group}">
+		<StandardListItem title="{name}" type="Active" />
 	</SelectDialog>
 </core:FragmentDefinition>

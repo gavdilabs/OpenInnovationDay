@@ -3,9 +3,7 @@
     controller = "com.gavdilabs.ui5template.controller.Group">
     <Dialog title="Add new group" class="sapUiResponsiveContentPadding">
         <content>
-           <Input placeholder="Enter group name">
-           
-		</Input>
+            <Input placeholder="Enter group name"/>
         </content>
         <beginButton>
             <Button text="Add" press="onCloseNewProcess"/>

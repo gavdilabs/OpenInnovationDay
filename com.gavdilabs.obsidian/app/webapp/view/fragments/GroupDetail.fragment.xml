@@ -5,7 +5,7 @@
     xmlns:uxap="sap.uxap"
     xmlns:unified="sap.ui.unified" controllerName="com.gavdilabs.ui5template.controller.Group"
     xmlns:form="sap.ui.layout.form">
-    <uxap:ObjectPageLayout id="GroupDetailPage" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false" class="sapUiSmallMarginBegin">
+    <uxap:ObjectPageLayout id="GroupDetailPage" sections="{rulesets}" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false" class="sapUiSmallMarginBegin">
         <uxap:headerTitle>
             <uxap:ObjectPageDynamicHeaderTitle>
                 <uxap:expandedHeading>
@@ -27,132 +27,27 @@
         <uxap:headerContent>
         </uxap:headerContent>
         <uxap:sections>
-            <uxap:ObjectPageSection title="LMS">
+            <uxap:ObjectPageSection title="{rule/name}">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection >
                         <uxap:blocks>
-                            <uitable:Table id="globalLMStableGroup" visibleRowCount="4" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <Title text="Code of Conduct Course"/>
+                            <VBox>
+                                <OverflowToolbar style="Clear">
+                                    <Title text="{title}"/>
 
-                                        <ToolbarSpacer/>
+                                    <ToolbarSpacer/>
 
-                                        <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
-                                        <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection showTitle= "true" title="EC">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection >
-                        <uxap:blocks>
-                            <uitable:Table id="globalECtableGroup" visibleRowCount="5" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <ToolbarSpacer/>
-                                        <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
-                                        <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="Documents">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection >
-                        <uxap:blocks>
-                            <uitable:Table id="globalDocumentstableGroup" visibleRowCount="2" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <ToolbarSpacer/>
-                                        <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
-                                        <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
+                                    <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
+                                    <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
+                                </OverflowToolbar>
+                                <List items="{dataentries}" selectionChange=".onSelectionChange" mode="MultiSelect" growing="true" growingThreshold="50" includeItemInSelection="true">
+                                    <StandardListItem title="{dataentry}" />
+                                </List>
+                            </VBox>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>
             </uxap:ObjectPageSection>
         </uxap:sections>
-        <!--
-        <uxap:sections>
-            <uxap:ObjectPageSection title="EC">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection>
-                        <uxap:blocks>
-                            <uitable:Table id="globalECtablegroup" visibleRowCount="5" ariaLabelledBy="title">
-                                <uitable:extension>
-                                        OverflowToolbar style="Clear">
-                                            <Title id="title" text="Products"/>
-                                            <ToolbarSpacer/>
-                                            <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
-                                            <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
-                                        </OverflowToolbar><
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="11rem">
-                                        <Label text="Data entry name" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                        <uxap:actions>
-							<Button icon="sap-icon://edit"/>
-						</uxap:actions>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="Job profiles">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection>
-                        <uxap:blocks>
-                            <Label text="This is 2nd subsection" />
-                            <Text text="some content" />
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-        </uxap:sections>-->
-        <uxap:footer>
-            <OverflowToolbar>
-                <ToolbarSpacer />
-                <Button text="empty " />
-            </OverflowToolbar>
-        </uxap:footer>
     </uxap:ObjectPageLayout>
 </core:FragmentDefinition>

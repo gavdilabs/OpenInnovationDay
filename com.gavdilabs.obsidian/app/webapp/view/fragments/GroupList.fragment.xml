@@ -2,31 +2,28 @@
 	xmlns="sap.ui.webc.fiori"
 	xmlns:core="sap.ui.core" controllerName="com.gavdilabs.ui5template.controller.Group">
 	<m:VBox height="100%">
-	<m:VBox height="95%">
-		<m:OverflowToolbar class="sapFDynamicPageAlignContent">
-			<m:ToolbarSpacer/>
-			<m:Input id = "groupListSearch" width="25rem">
+		<m:VBox height="97%">
+			<m:OverflowToolbar class="sapFDynamicPageAlignContent">
+				<m:ToolbarSpacer/>
+				<m:Input id = "groupListSearch" width="25rem">
 				</m:Input>
-			<m:MenuButton icon="sap-icon://sort" useDefaultActionOnly="true">
-				<m:menu>
-					<m:Menu itemSelected="onMenuAction">
-						<m:MenuItem text="By Name" press=".onSortFirstName"/>
-					</m:Menu>
-				</m:menu>
-			</m:MenuButton>
-		</m:OverflowToolbar>
-		<m:List itemPress=".onClickedItem" growing="true" items="{/Group}">
-			<m:StandardListItem title="{name}" description="Countries: " type="Navigation" />
-		</m:List>
-	</m:VBox>
-	<m:VBox height="5%">
-	<m:OverflowToolbar height="4rem">
-			<m:ToolbarSpacer/>
-			<m:Button
-				icon="sap-icon://add"
-				text="Add new group"
-				press="addNewGroup"/>
-		</m:OverflowToolbar>
-	</m:VBox>
+				<m:MenuButton icon="sap-icon://sort" useDefaultActionOnly="true">
+					<m:menu>
+						<m:Menu itemSelected="onMenuAction">
+							<m:MenuItem text="By Name" press=".onSortFirstName"/>
+						</m:Menu>
+					</m:menu>
+				</m:MenuButton>
+			</m:OverflowToolbar>
+			<m:List itemPress=".onClickedItem" growing="true" items="{path: '/Group', parameters: {$expand: 'countries', $select: 'countries/country/name'}}">
+				<m:StandardListItem title="{name}" description="{path: 'countries', mode : 'OneTime', targetType : 'any', formatter: '.formatter.countriesToString'}" type="Navigation" />
+			</m:List>
+		</m:VBox>
+		<m:VBox height="3%">
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button icon="sap-icon://add" text="Add new group" press="addNewGroup"/>
+			</m:OverflowToolbar>
+		</m:VBox>
 	</m:VBox>
 </core:FragmentDefinition>

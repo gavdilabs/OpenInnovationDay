@@ -1,24 +1,24 @@
-import MessageBox from "sap/m/MessageBox";
 import BaseController from "./BaseController";
 import formatter from "../model/formatter";
 import Fragment from "sap/ui/core/Fragment";
-import UI5Element from "sap/ui/core/Element";
 import DynamicSideContent from "sap/ui/layout/DynamicSideContent";
 import Control from "sap/ui/core/Control";
-import List from "sap/m/List";
-import StandardListItem from "sap/m/StandardListItem";
 import Dialog from "sap/m/Dialog";
-import JSONModel from "sap/ui/model/json/JSONModel";
-import Table from "sap/ui/table/Table";
 import Event from "sap/ui/base/Event";
+import Filter from "sap/ui/model/Filter";
+import FilterOperator from "sap/ui/model/FilterOperator";
+import ODataContextBinding from "sap/ui/model/odata/v4/ODataContextBinding";
 
 /**
  * @namespace com.gavdilabs.ui5template.controller
  */
 export default class Country extends BaseController {
-	private formatter = formatter;
+	public formatter = formatter;
 	private _editProcessDialog: Dialog;
 	private _editGroupDialog: Dialog;
+	private countryListFragment: Control;
+	private countryDetailFragment: Control;
+
 
 	public onInit(): void {
 		this.getRouter()
@@ -26,62 +26,69 @@ export default class Country extends BaseController {
 		.attachPatternMatched(this.onCountryMatched, this);
 	}
 
-
 	async onCountryMatched(oEvent: Event): Promise<void> {
-		const countryListFragmentID = Fragment.byId("countryListFragmentID", "CountryDetailPage");
-		if (!countryListFragmentID) {
-			const countryListFragmentCreate = sap.ui.xmlfragment(
+		if (!this.countryListFragment) {
+			this.countryListFragment = sap.ui.xmlfragment(
 				"countryListFragmentID",
 				"com.gavdilabs.ui5template.view.fragments.CountryList",
 				this
 			) as Control;
-			const countryDetailFragmentCreate = sap.ui.xmlfragment(
+			this.countryDetailFragment = sap.ui.xmlfragment(
 				"countryDetailFragmentID",
 				"com.gavdilabs.ui5template.view.fragments.CountryDetail",
 				this
 			) as Control;
 			const DynamicSideContentCountry = this.getView().byId("DynamicSideContentCountry") as DynamicSideContent;
-			DynamicSideContentCountry.addSideContent(countryListFragmentCreate);
-			DynamicSideContentCountry.addMainContent(countryDetailFragmentCreate);
-			
-			const obj3 = new JSONModel();
-			obj3.setData([{ Name: "Item ID" }, { Name: "Duration" }, { Name: "Completion status" }, { Name: "Completed date" }]);
-			(sap.ui.getCore().byId("countryDetailFragmentID--globalLMStable") as Table).setModel(obj3);
-			(sap.ui.getCore().byId("countryDetailFragmentID--globalLMStable") as Table).bindRows("/");
-	
-	
-			const obj4 = new JSONModel();
-			obj4.setData([{ Name: "Social security number" }, { Name: "Tax documents" }]);
-			(sap.ui.getCore().byId("countryDetailFragmentID--countryDocumentstable") as Table).setModel(obj4);
-			(sap.ui.getCore().byId("countryDetailFragmentID--countryDocumentstable") as Table).bindRows("/");
-	
-			const obj5 = new JSONModel();
-			obj5.setData([{ Name: "Contracts" }, { Name: "Addendum" }]);
-			(sap.ui.getCore().byId("countryDetailFragmentID--globalDocumentstable") as Table).setModel(obj5);
-			(sap.ui.getCore().byId("countryDetailFragmentID--globalDocumentstable") as Table).bindRows("/");
-		
-			
-			const obj = new JSONModel();
-			obj.setData([{ Name: "Last Name" }, { Name: "First Name" }, { Name: "Global ID" }, { Name: "Location" }, { Name: "Cost center" }]);
-			(sap.ui.getCore().byId("countryDetailFragmentID--globalECtable") as Table).setModel(obj);
-			(sap.ui.getCore().byId("countryDetailFragmentID--globalECtable") as Table).bindRows("/");
-
-			const obj2 = new JSONModel();
-			obj2.setData([{ Name: "Item ID" }, { Name: "Duration" }, { Name: "Completion status" }, { Name: "Completed date" }]);
-			(sap.ui.getCore().byId("countryDetailFragmentID--euLMStable") as Table).setModel(obj2);
-			(sap.ui.getCore().byId("countryDetailFragmentID--euLMStable") as Table).bindRows("/");
+			DynamicSideContentCountry.addSideContent(this.countryListFragment);
+			DynamicSideContentCountry.addMainContent(this.countryDetailFragment);
 		}
 		const countryID = oEvent.getParameter("arguments").countryID || "0";
-		const countryDetailPage = (sap.ui.getCore().byId("countryDetailFragmentID--CountryDetailPage"))
+		this.bindCountry(countryID)
+	}
+
+	private async bindCountry(countryID: string) {
+		const countryDetailPage = Fragment.byId("countryDetailFragmentID", "CountryDetailPage")
 		countryDetailPage.bindElement({
 			path: "/Country(" + countryID + ")",
 		});
+		const ctx = this.getView().getModel().bindContext(`/GetCountryGroup(...)`) as ODataContextBinding;
+		ctx.setParameter("countryID", countryID)
+		await ctx.execute();
+		const validGroups = await ctx.requestObject();		
+		var aFilters = [];
+		
+		const countryFilter = new Filter({
+			filters: [
+			new Filter({ path: "rulesets/targetID", operator: FilterOperator.EQ, value1: countryID }),
+			],
+			and: false,
+		});
+		aFilters.push(countryFilter)
+		
+		validGroups.value.forEach((group: { groupID: any; }) => {
+			const groupFilter = new Filter({
+			filters: [
+			new Filter({ path: "rulesets/targetID", operator: FilterOperator.EQ, value1: group.groupID }),
+			],
+			and: false,
+		});
+		aFilters.push(groupFilter)
+		});
+		// The main filter which inludes filtering on countryId and on valid groupIds
+		const mainFilter = new Filter({
+			filters: aFilters,
+			and: false,
+		});
 
+		countryDetailPage.getBinding("sections").filter(
+			new Filter({
+				path: "rulesets", 
+				operator: FilterOperator.All, //All here works as any
+				variable : "rulesets", 
+				condition : mainFilter 
+		})
+		);
 	}
-	onAfterRendering(): void {
-		//(sap.ui.getCore().byId("countryListFragmentID--CountryList") as List).setSelectedItem(sap.ui.getCore().byId("countryListFragmentID--poland") as StandardListItem)
-	}
-
 	public async addNewProcess(): Promise<void> {
 		const oView = this.getView();
 
@@ -118,5 +125,10 @@ export default class Country extends BaseController {
 
 	onCloseProcessDialog() {
 		this._editProcessDialog.close();
+	}
+
+	onClickedItem(ev: Event) {
+		const countryID = ev.getParameter("listItem").getBindingContext().getObject().ID 
+		this.navTo("country", {countryID: countryID});
 	}
 }

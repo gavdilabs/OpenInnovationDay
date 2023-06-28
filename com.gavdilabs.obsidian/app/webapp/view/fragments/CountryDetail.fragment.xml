@@ -5,7 +5,7 @@
     xmlns:uxap="sap.uxap"
     xmlns:unified="sap.ui.unified" controllerName="com.gavdilabs.ui5template.controller.Country"
     xmlns:form="sap.ui.layout.form">
-    <uxap:ObjectPageLayout id="CountryDetailPage" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false" class="sapUiSmallMarginBegin">
+    <uxap:ObjectPageLayout id="CountryDetailPage" sections="{/Rule}" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false" class="sapUiSmallMarginBegin">
         <uxap:headerTitle>
             <uxap:ObjectPageDynamicHeaderTitle>
                 <uxap:expandedHeading>
@@ -33,109 +33,22 @@
             </HBox>
         </uxap:headerContent>
         <uxap:sections>
-            <uxap:ObjectPageSection title="LMS">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection showTitle = "true" title="EU" class="sapUiSmallMarginTop">
-                        <uxap:blocks>
-                            <uitable:Table id="euLMStable" visibleRowCount="4" selectionMode="None" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <Title text="GDPR Complaince Course"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                    <uxap:ObjectPageSubSection showTitle = "true" title="Global">
-                        <uxap:blocks>
-                            <uitable:Table id="globalLMStable" visibleRowCount="4" selectionMode="None" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <Title text="Code of Conduct Course"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection showTitle= "true" title="EC">
+            <uxap:ObjectPageSection title="{name}" subSections="{rulesets}">
                 <uxap:subSections>
                     <uxap:ObjectPageSubSection >
                         <uxap:blocks>
-                            <uitable:Table id="globalECtable" visibleRowCount="5" selectionMode="None" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <Title text="Global" class="titleClass"/>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                </uxap:subSections>
-            </uxap:ObjectPageSection>
-            <uxap:ObjectPageSection title="Documents">
-                <uxap:subSections>
-                    <uxap:ObjectPageSubSection showTitle = "true" title="Country" class="sapUiSmallMarginTop">
-                        <uxap:blocks>
-                            <uitable:Table id="countryDocumentstable" visibleRowCount="2" selectionMode="Multi" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <ToolbarSpacer/>
-                                        <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
-                                        <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
-                        </uxap:blocks>
-                    </uxap:ObjectPageSubSection>
-                    <uxap:ObjectPageSubSection showTitle = "true" title="Global">
-                        <uxap:blocks>
-                            <uitable:Table id="globalDocumentstable" visibleRowCount="2" selectionMode="None" ariaLabelledBy="title">
-                                <uitable:extension>
-                                    <OverflowToolbar style="Clear">
-                                        <Title text="Code of Conduct Course"/>
-                                    </OverflowToolbar>
-                                </uitable:extension>
-                                <uitable:columns>
-                                    <uitable:Column width="100%">
-                                        <Label text="Data entry" />
-                                        <uitable:template>
-                                            <Text text="{Name}" />
-                                        </uitable:template>
-                                    </uitable:Column>
-                                </uitable:columns>
-                            </uitable:Table>
+                            <VBox>
+                                <OverflowToolbar style="Clear">
+                                    <Title text="{title}"/>
+                                    <ToolbarSpacer/>
+                                    <Button id="add" icon="sap-icon://add" tooltip="Add an item" press="addElement" enabled="{path: 'targetType', targetType : 'any', formatter: '.formatter.formatTargetType'}"/>
+                                    <Button id="remove" icon="sap-icon://delete" tooltip="Remove selected" press="removeElement" enabled="{path: 'targetType', targetType : 'any', formatter: '.formatter.formatTargetType'}"/>
+
+                                </OverflowToolbar>
+                                <List items="{dataentries}" selectionChange=".onSelectionChange" mode="{path: 'targetType', targetType : 'any', formatter: '.formatter.formatListMode'}" growing="true" growingThreshold="50" includeItemInSelection="true">
+                                    <StandardListItem title="{dataentry}" />
+                                </List>
+                            </VBox>
                         </uxap:blocks>
                     </uxap:ObjectPageSubSection>
                 </uxap:subSections>

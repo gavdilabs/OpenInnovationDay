@@ -19,7 +19,7 @@ export interface ICountry {
   name: string;
   countryCode: string;
   groups?: ICountryToGroup[];
-  rulesets?: IRulesSetCountry[];
+  rulesets?: IRulesSet[];
 }
 
 export interface IGroup {
@@ -30,7 +30,7 @@ export interface IGroup {
   ID: string;
   name: string;
   countries?: ICountryToGroup[];
-  rulesets?: IRulesSetGroup[];
+  rulesets?: IRulesSet[];
 }
 
 export interface ICountryToGroup {
@@ -46,30 +46,16 @@ export interface ICountryToGroup {
   country?: ICountry;
 }
 
-export interface IRulesSetCountry {
+export interface IRulesSet {
   createdAt?: Date;
   createdBy?: string;
   modifiedAt?: Date;
   modifiedBy?: string;
   ID: string;
   ruleID: string;
-  countryID: string;
+  targetID: string;
+  targetType: string;
   title: string;
-  country?: ICountry;
-  rule?: IRule;
-  dataentries?: IRulesEntry[];
-}
-
-export interface IRulesSetGroup {
-  createdAt?: Date;
-  createdBy?: string;
-  modifiedAt?: Date;
-  modifiedBy?: string;
-  ID: string;
-  ruleID: string;
-  groupID: string;
-  title: string;
-  group?: IGroup;
   rule?: IRule;
   dataentries?: IRulesEntry[];
 }
@@ -81,6 +67,7 @@ export interface IRule {
   modifiedBy?: string;
   ID: string;
   name: string;
+  rulesets?: IRulesSet[];
 }
 
 export interface IRulesEntry {
@@ -93,13 +80,23 @@ export interface IRulesEntry {
   dataentry: string;
 }
 
+export enum FuncGetCountryGroup {
+  name = "GetCountryGroup",
+  paramCountryID = "countryID",
+}
+
+export interface IFuncGetCountryGroupParams {
+  countryID: string;
+}
+
+export type FuncGetCountryGroupReturn = string[];
+
 export enum Entity {
   User = "BasicService.User",
   Country = "BasicService.Country",
   Group = "BasicService.Group",
   CountryToGroup = "BasicService.CountryToGroup",
-  RulesSetCountry = "BasicService.RulesSetCountry",
-  RulesSetGroup = "BasicService.RulesSetGroup",
+  RulesSet = "BasicService.RulesSet",
   Rule = "BasicService.Rule",
   RulesEntry = "BasicService.RulesEntry",
 }
@@ -109,8 +106,7 @@ export enum SanitizedEntity {
   Country = "Country",
   Group = "Group",
   CountryToGroup = "CountryToGroup",
-  RulesSetCountry = "RulesSetCountry",
-  RulesSetGroup = "RulesSetGroup",
+  RulesSet = "RulesSet",
   Rule = "Rule",
   RulesEntry = "RulesEntry",
 }

@@ -19,7 +19,7 @@ export interface ICountry {
   name: string;
   countryCode: string;
   groups?: ICountryToGroup[];
-  rulesets?: IRulesSetCountry[];
+  rulesets?: IRulesSet[];
 }
 
 export interface IGroup {
@@ -30,7 +30,7 @@ export interface IGroup {
   ID: string;
   name: string;
   countries?: ICountryToGroup[];
-  rulesets?: IRulesSetGroup[];
+  rulesets?: IRulesSet[];
 }
 
 export interface ICountryToGroup {
@@ -53,32 +53,19 @@ export interface IRule {
   modifiedBy?: string;
   ID: string;
   name: string;
+  rulesets?: IRulesSet[];
 }
 
-export interface IRulesSetCountry {
+export interface IRulesSet {
   createdAt?: Date;
   createdBy?: string;
   modifiedAt?: Date;
   modifiedBy?: string;
   ID: string;
   ruleID: string;
-  countryID: string;
+  targetID: string;
+  targetType: string;
   title: string;
-  country?: ICountry;
-  rule?: IRule;
-  dataentries?: IRulesEntry[];
-}
-
-export interface IRulesSetGroup {
-  createdAt?: Date;
-  createdBy?: string;
-  modifiedAt?: Date;
-  modifiedBy?: string;
-  ID: string;
-  ruleID: string;
-  groupID: string;
-  title: string;
-  group?: IGroup;
   rule?: IRule;
   dataentries?: IRulesEntry[];
 }
@@ -99,8 +86,7 @@ export enum Entity {
   Group = "schema.Group",
   CountryToGroup = "schema.CountryToGroup",
   Rule = "schema.Rule",
-  RulesSetCountry = "schema.RulesSetCountry",
-  RulesSetGroup = "schema.RulesSetGroup",
+  RulesSet = "schema.RulesSet",
   RulesEntry = "schema.RulesEntry",
 }
 
@@ -110,7 +96,6 @@ export enum SanitizedEntity {
   Group = "Group",
   CountryToGroup = "CountryToGroup",
   Rule = "Rule",
-  RulesSetCountry = "RulesSetCountry",
-  RulesSetGroup = "RulesSetGroup",
+  RulesSet = "RulesSet",
   RulesEntry = "RulesEntry",
 }
