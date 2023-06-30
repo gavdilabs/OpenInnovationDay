@@ -6,9 +6,15 @@ service BasicService {
 
     // ======================= ENTITIES ============================
 
-   
+    entity Users as projection on schema.Users;
 
-    entity User as projection on schema.User;
+    entity Candidates as projection on schema.Candidates;
+
+    entity Actions as projection on schema.Actions;
+
+    entity Communications as projection on schema.Communications;
+
+    entity OnBoardings as projection on schema.OnBoardings;
 
     // ==================== ACTION IMPORTS ==========================
 

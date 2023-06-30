@@ -81,22 +81,38 @@
             "routes": [
                 {
                     "pattern": "",
-                    "name": "main",
-                    "target": "main"
+                    "name": "candidateOverview",
+                    "target": "candidateOverview"
                 },{
 					"pattern": "detail/{reqid}",
 					"name": "detail",
 					"target": "detail"
+				},{
+					"pattern": "candidateinfo",
+					"name": "candidateinfo",
+					"target": "candidateinfo"
+				},{
+					"pattern": "main",
+					"name": "main",
+					"target": "main"
 				}
             ],
             "targets": {
-                "main": {
-                    "viewId": "main",
-                    "viewName": "Main"
+                "candidateOverview": {
+                    "viewId": "candidateOverview",
+                    "viewName": "CandidateOverview"
                 },
                 "detail": {
 					"viewId": "detail",
 					"viewName": "Detail"
+				},
+                "candidateinfo": {
+					"viewId": "candidateInfo",
+					"viewName": "CandidateInfo"
+				},
+                "main": {
+					"viewId": "main",
+					"viewName": "Main"
 				}
             }
         }

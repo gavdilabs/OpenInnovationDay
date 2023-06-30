@@ -1,0 +1,91 @@
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.CandidateOverview" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:card="sap.f.cards"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc">
+
+	<f:DynamicPage id="dynamicPageCandidate" showFooter="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Onboarding 3.0"/>
+				</f:heading>
+				<f:content>
+
+				</f:content>
+				<f:actions>
+
+				</f:actions>
+				<f:navigationActions>
+					<OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose"  tooltip="Close middle column"/>
+			
+				</f:navigationActions>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<HBox justifyContent="SpaceBetween">
+					<HBox >
+						<Avatar src="https://images.generated.photos/IbmmibriSwVO9Hqu3Uy6soqGCti90c791030XajgXCY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MTk3MTIxLmpwZw.jpg" displaySize="L" showBorder="true"/>
+						<FlexBox alignItems="Start" justifyContent="Center" direction="Column" class="sapUiSmallMarginBegin">
+							<HBox>
+								<Text text="Emilia" class="sapUiTinyMargin"/>
+								<Text text="HR Technology Advisor" class="sapUiTinyMargin"/>
+							</HBox>
+
+						</FlexBox>
+					</HBox>
+					<HBox>
+						<ProgressIndicator percentValue="75" displayValue="75%" showValue="true" state="Success" width="100%"/>
+
+					</HBox>
+				</HBox>
+
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<HBox justifyContent="SpaceBetween" width="100%">
+
+				<Table id="idToDoTable" inset="false" width="500px">
+
+					<columns>
+						<Column width="5em">
+							<Text text="Status" />
+						</Column>
+						<Column width="12em">
+							<Text text="Task" />
+						</Column>
+					</columns>
+
+					<items>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<CheckBox selected="true" />
+								<Text text="Some arbitrary task" />
+
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+				<f:Card class="sapUiSmallMargin" width="100%">
+					<f:header>
+
+					</f:header>
+					<f:content>
+						<NotificationList items="{ path: '/Actions'}">
+							<NotificationListItem title="{title}" description="{description}" showCloseButton="false" datetime="{createdAt}" unread="{= ${status} === '01'}" priority="{= ${priority} === '01' ? 'Low' : 'None'}" close=".onItemClose" press=".onActionitemsPress" authorName="{createdBy}" authorPicture="" showButtons="true">
+								<buttons>
+									<Button visible="{= ${type === 'message'}}" text="Go To Message" press=".onGoToMessage" />
+								</buttons>
+							</NotificationListItem>
+						</NotificationList>
+					</f:content>
+				</f:Card>
+
+			</HBox>
+		</f:content>
+	</f:DynamicPage>
+
+</mvc:View>

@@ -1,0 +1,68 @@
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.CandidateOverview" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:layout="sap.ui.layout">
+	<f:FlexibleColumnLayout id="flcDocMetadataTypes" backgroundDesign="Translucent" layout="OneColumn">
+		<f:beginColumnPages>
+			<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+				<!-- DynamicPage Title -->
+				<f:title>
+					<f:DynamicPageTitle>
+						<f:heading>
+							<Title text="Candidate Overview"/>
+							
+						</f:heading>
+						
+					</f:DynamicPageTitle>
+				</f:title>
+
+				<!-- DynamicPage Content -->
+				<f:content>
+					<Table id="candidateTable" mode="SingleSelectMaster" itemPress=".onListItemPress" items="{path: '/Candidates'}" class="sapFDynamicPageAlignContent" width="auto">
+						<headerToolbar>
+							<OverflowToolbar>
+								<ToolbarSpacer/>
+								<SearchField search="onSearch" width="17.5rem"/>
+								<OverflowToolbarButton icon="sap-icon://sort" type="Transparent" press="onSort"/>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="12em">
+								<Text text="Name" />
+							</Column>
+							<Column hAlign="End">
+								<Text text="Status" />
+							</Column>
+							<Column hAlign="End">
+								<Text text="Engagement" />
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation">
+								<cells>
+									<ObjectIdentifier title="{firstName} {lastName}" />
+									<ObjectIdentifier title="{onBoarding/status}" />
+									<ObjectIdentifier title="{onBoarding/engagement}" />
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</f:content>
+
+				<!-- DynamicPage Footer -->
+				<f:footer>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<Button type="Accept" text="Accept"/>
+						<Button type="Reject" text="Reject"/>
+					</OverflowToolbar>
+				</f:footer>
+			</f:DynamicPage>
+		</f:beginColumnPages>
+		<f:midColumnPages>
+			<mvc:XMLView id="CandidateInfo" viewName="com.gavdilabs.ui5template.view.CandidateInfo"/>
+		</f:midColumnPages>
+	</f:FlexibleColumnLayout>
+</mvc:View>
+
