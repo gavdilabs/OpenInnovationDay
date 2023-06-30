@@ -1,0 +1,9 @@
+<mvc:View controllerName="com.gavdilabs.ui5template.controller.Country" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m" displayBlock="true" height="100%">
+
+<Page showHeader="false">
+		<l:DynamicSideContent id="DynamicSideContentCountry" sideContentFallDown="BelowM" sideContentPosition="Begin" sideContentVisibility="AlwaysShow" containerQuery="true">
+		</l:DynamicSideContent>
+	</Page>
+</mvc:View>

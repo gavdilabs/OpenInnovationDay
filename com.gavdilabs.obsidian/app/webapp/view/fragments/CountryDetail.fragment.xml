@@ -1,0 +1,64 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:uitable="sap.ui.table"
+    xmlns:uxap="sap.uxap"
+    xmlns:unified="sap.ui.unified" controllerName="com.gavdilabs.ui5template.controller.Country"
+    xmlns:form="sap.ui.layout.form">
+    <uxap:ObjectPageLayout id="CountryDetailPage" sections="{/Rule}" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false" class="sapUiSmallMarginBegin">
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:expandedHeading>
+                    <HBox>
+                        <Title text="{name}" wrapping="true" />
+                    </HBox>
+                </uxap:expandedHeading>
+                <uxap:snappedHeading>
+                    <FlexBox fitContainer="true" alignItems="Center">
+                        <Title text="{name}" wrapping="true" />
+                    </FlexBox>
+                </uxap:snappedHeading>
+                <uxap:actions>
+                    <Button text="Edit processes" icon="sap-icon://edit" press="addNewProcess"/>
+                    <Button text="Edit groups" icon="sap-icon://edit" press="editGroup"/>
+                </uxap:actions>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+            <HBox>
+                <form:SimpleForm editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false" width="25rem">
+                    <Label text="Hide groups" />
+                    <CheckBox selected="false" />
+                </form:SimpleForm>
+            </HBox>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="{name}" subSections="{rulesets}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <VBox>
+                                <OverflowToolbar style="Clear">
+                                    <Title text="{title}"/>
+                                    <ToolbarSpacer/>
+                                    <Button id="add" icon="sap-icon://add" tooltip="Add an item" press="addElement" enabled="{path: 'targetType', targetType : 'any', formatter: '.formatter.formatTargetType'}"/>
+                                    <Button id="remove" icon="sap-icon://delete" tooltip="Remove selected" press="removeElement" enabled="{path: 'targetType', targetType : 'any', formatter: '.formatter.formatTargetType'}"/>
+
+                                </OverflowToolbar>
+                                <List items="{dataentries}" selectionChange=".onSelectionChange" mode="{path: 'targetType', targetType : 'any', formatter: '.formatter.formatListMode'}" growing="true" growingThreshold="50" includeItemInSelection="true">
+                                    <StandardListItem title="{dataentry}" />
+                                </List>
+                            </VBox>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+        <uxap:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button text="empty " />
+            </OverflowToolbar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</core:FragmentDefinition>

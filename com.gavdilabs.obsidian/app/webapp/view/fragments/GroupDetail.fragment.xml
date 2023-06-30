@@ -1,0 +1,53 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:layout="sap.ui.layout"
+    xmlns:uitable="sap.ui.table"
+    xmlns:uxap="sap.uxap"
+    xmlns:unified="sap.ui.unified" controllerName="com.gavdilabs.ui5template.controller.Group"
+    xmlns:form="sap.ui.layout.form">
+    <uxap:ObjectPageLayout id="GroupDetailPage" sections="{rulesets}" showTitleInHeaderContent="true" alwaysShowContentHeader="false" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false" class="sapUiSmallMarginBegin">
+        <uxap:headerTitle>
+            <uxap:ObjectPageDynamicHeaderTitle>
+                <uxap:expandedHeading>
+                    <HBox>
+                        <Title text="{name}" wrapping="true" />
+                    </HBox>
+                </uxap:expandedHeading>
+                <uxap:snappedHeading>
+                    <FlexBox fitContainer="true" alignItems="Center">
+                        <Title text="Global" wrapping="true" />
+                    </FlexBox>
+                </uxap:snappedHeading>
+                <uxap:actions>
+                    <Button text="Add new process" icon="sap-icon://add-equipment" press="addNewProcess"/>
+                    <Button text="Assign countries" icon="sap-icon://add-employee" press="addCountry"/>
+                </uxap:actions>
+            </uxap:ObjectPageDynamicHeaderTitle>
+        </uxap:headerTitle>
+        <uxap:headerContent>
+        </uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection title="{rule/name}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <VBox>
+                                <OverflowToolbar style="Clear">
+                                    <Title text="{title}"/>
+
+                                    <ToolbarSpacer/>
+
+                                    <Button icon="sap-icon://delete" tooltip="Add an item" press="getSelectedIndices"/>
+                                    <Button icon="sap-icon://add" tooltip="Remove selected" press="getContextByIndex"/>
+                                </OverflowToolbar>
+                                <List items="{dataentries}" selectionChange=".onSelectionChange" mode="MultiSelect" growing="true" growingThreshold="50" includeItemInSelection="true">
+                                    <StandardListItem title="{dataentry}" />
+                                </List>
+                            </VBox>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>
+    </uxap:ObjectPageLayout>
+</core:FragmentDefinition>

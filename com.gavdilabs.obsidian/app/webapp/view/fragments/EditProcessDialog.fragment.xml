@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    controller = "com.gavdilabs.ui5template.controller.Country">
+	<SelectDialog id="mySelectDialog" title="Edit processes" search=".onSearch" confirm=".onCloseProcessDialog" cancel=".onCloseProcessDialog" multiSelect="true" contentHeight="auto" item="{/Rule}">
+		<StandardListItem title="{name}" type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

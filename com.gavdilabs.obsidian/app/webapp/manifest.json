@@ -61,6 +61,7 @@
             "": {
                 "dataSource": "mainService",
                 "preload": true,
+                "type": "sap.ui.model.odata.v4.ODataModel",
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
@@ -83,12 +84,30 @@
                     "pattern": "",
                     "name": "main",
                     "target": "main"
+                },
+                {
+                    "pattern": "country/{countryID}",
+                    "name": "country",
+                    "target": "country"
+                },
+                {
+                    "pattern": "group/{groupID}",
+                    "name": "group",
+                    "target": "group"
                 }
             ],
             "targets": {
                 "main": {
                     "viewId": "main",
                     "viewName": "Main"
+                },
+                "country": {
+                    "viewId": "country",
+                    "viewName": "Country"
+                },
+                "group": {
+                    "viewId": "group",
+                    "viewName": "Group"
                 }
             }
         }

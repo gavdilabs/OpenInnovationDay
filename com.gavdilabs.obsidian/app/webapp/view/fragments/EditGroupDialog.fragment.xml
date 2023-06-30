@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    controller = "com.gavdilabs.ui5template.controller.Country">
+	<SelectDialog id="editGroupDialog" title="Edit group" search=".onSearch" confirm=".onCloseGroupDialog" cancel=".onCloseGroupDialog" multiSelect="true" contentHeight="auto" items="{/Group}">
+		<StandardListItem title="{name}" type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

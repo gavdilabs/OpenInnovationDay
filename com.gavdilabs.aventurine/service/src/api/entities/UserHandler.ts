@@ -21,7 +21,7 @@ export default class UserHandler {
         // Your after read logic
     }
 
-    @BeforeCreate()
+    @BeforeCreate() 
     public async BeforeCreate(@Req() req: Request) {
         // Your before create logic
     }

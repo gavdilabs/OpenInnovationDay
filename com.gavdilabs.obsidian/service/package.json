@@ -36,21 +36,22 @@
     },
     "dependencies": {
         "@sap-cloud-sdk/connectivity": "^2.12.1",
-        "@sap-cloud-sdk/http-client": "^2.14.0",
         "@sap/audit-logging": "^5.5.3",
-        "@sap/cds": "^6.3.1",
         "@sap/xsenv": "^3.2.2",
-        "@sap/xssec": "^3.2.13",
-        "cds-dbm": "^0.1.4",
-        "cds-pg": "0.1.36",
+        "@sap-cloud-sdk/core": "^1.54.2",
+    "@sap-cloud-sdk/http-client": "^2.15.0",
+    "@sap/cds": "^5.9.8",
+    "@sap/xssec": "^3.2.17",
+    "cds-dbm": "^0.0.36",
+    "cds-pg": "0.1.33",
         "cds-routing-handlers": "^3.0.7",
         "express": "^4.17.3",
         "passport": "^0.5.2",
         "reflect-metadata": "^0.1.13",
         "sap-cf-axios": "^0.3.6",
         "winston": "^3.8.2"
-    },
-    "devDependencies": {
+      },
+      "devDependencies": {
         "@types/chai": "^4.3.4",
         "@types/chai-http": "^4.2.0",
         "@types/express": "^4.17.13",
@@ -72,16 +73,9 @@
         "ts-node": "^10.9.1",
         "typedi": "^0.10.0",
         "typescript": "^4.7.2"
-    },
+      },
     "cds": {
         "requires": {
-            "northwind": {
-                "kind": "odata",
-                "model": "srv/external/northwind",
-                "credentials": {
-                    "url": "https://services.odata.org/v4/northwind/northwind.svc/"
-                }
-            },
             "db": {
                 "kind": "postgres",
                 "dialect": "plain"

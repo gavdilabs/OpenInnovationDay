@@ -1,0 +1,7 @@
+<core:FragmentDefinition xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    controller = "com.gavdilabs.ui5template.controller.Group">
+	<SelectDialog id="addCountryDialog" title="Add country" search=".onSearch" confirm=".onCloseAddCountryDialog" cancel=".onCloseAddCountryDialog" multiSelect="true" contentHeight="auto" items="{/Country}">
+		<StandardListItem title="{name}" selected="true"/>
+	</SelectDialog>
+</core:FragmentDefinition>
